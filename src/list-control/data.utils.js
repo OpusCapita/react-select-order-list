@@ -21,15 +21,9 @@ export default {
   ),
 
   getSelectedData: (visibleData) => {
-    const selectedData = [];
-    const sorteData = Object.assign([], visibleData);
-    sorteData.sort((a, b) => a.priority > b.priority);
-    sorteData.forEach((data) => {
-      if (data.isSelected) {
-        selectedData.push(data);
-      }
-    });
-    return selectedData;
+    const sortedData = visibleData.slice();
+    sortedData.sort((a, b) => a.priority > b.priority);
+    return sortedData.filter(d => d.isSelected === true);
   },
 
   changeDataSort: (data, oldIndex, newIndex) => arrayMove(data, oldIndex, newIndex),

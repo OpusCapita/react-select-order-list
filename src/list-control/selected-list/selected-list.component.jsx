@@ -59,10 +59,7 @@ export default class SelectedDataList extends React.PureComponent {
   }
 
   shouldCancelStart = (e) => {
-    if (e.target.className.baseVal && e.target.className.baseVal.indexOf('oc-icon-remove') !== -1) {
-      return true;
-    }
-    return false;
+    return e.target.className.baseVal && e.target.className.baseVal.indexOf('oc-icon-remove') !== -1;
   }
 
   render() {

@@ -7,6 +7,7 @@ export default class ListItemsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedData: [],
       availableData: [
         {
           key: 1,
@@ -30,17 +31,28 @@ export default class ListItemsView extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({
+      selectedData: this.getSelectedData(),
+    });
+  }
+  getSelectedData() {
+    const sortedData = this.state.availableData.slice();
+    sortedData.sort((a, b) => a.priority > b.priority);
+    return sortedData.filter(d => d.isSelected === true);
+  }
 
-  dataChange = (selectedData) => {
-    this.setState({ selectedData });
+  dataChange = (availableData, selectedData) => {
+    this.setState({ availableData, selectedData });
   }
 
   render() {
     return (
-      <div id="oc-select-order-list">
+      <div className="oc-select-order-list">
         <SelectOrderList
           availableData={this.state.availableData}
-          avaibleListLabel={'Avaible data'}
+          selectedData={this.state.selectedData}
+          availableListLabel={'Available data'}
           selectedListLabel={'Selected data'}
           dataChange={this.dataChange}
         />

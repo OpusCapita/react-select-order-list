@@ -8,19 +8,16 @@ $oc-grid-color-border:              #D3DADE !default;
 $oc-grid-color-text:                #67707C !default;
 $oc-grid-color-border:              #D3DADE !default;
 
-  .oc-data-keyword-group {
-    position: relative;
-    .oc-data-keyword-input {
-      border: 2px solid $oc-grid-color-border;
-    }
-    .oc-data-keyword-icon {
-      position: absolute;
-      font-size: $oc-grid-font-size-icon;
-      top: 8px;
-      right: 9px;
-      cursor: pointer;
-      color: $oc-grid-color-text;
-    }
+  .oc-data-keyword-input {
+    border: 2px solid $oc-grid-color-border;
+  }
+  .oc-data-keyword-icon {
+    position: absolute;
+    font-size: $oc-grid-font-size-icon;
+    top: 8px;
+    right: 9px;
+    cursor: pointer;
+    color: $oc-grid-color-text;
   }
 
   .oc-available-data-list, .oc-selected-data-list {

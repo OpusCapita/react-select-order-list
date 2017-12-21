@@ -32,9 +32,23 @@ describe('ListItems component', function describe() {
           priority: 0,
         },
       ],
+      selectedData: [
+        {
+          key: 2,
+          label: 'two',
+          isSelected: true,
+          priority: 1,
+        },
+        {
+          key: 3,
+          label: 'three',
+          isSelected: true,
+          priority: 0,
+        },
+      ],
     };
     const wrapper = mount(<SelectOrderList {...props} />);
-    expect(wrapper.find('.oc-data-keyword-group').exists()).to.equal(true);
+    expect(wrapper.find('.oc-data-keyword-input').exists()).to.equal(true);
     let spy;
     spy = sinon.spy(wrapper.instance(), 'handleKeywordChange');
     wrapper.instance().handleKeywordChange({ target: { value: 'test' } });
