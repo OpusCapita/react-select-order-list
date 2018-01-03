@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Icon } from '@opuscapita/react-icons';
 import ScrollBar from '@opuscapita/react-perfect-scrollbar';
 import {
@@ -49,7 +50,7 @@ const SortableList = SortableContainer(({ items, handleItemRemove }) => (
 
 export default class SelectedDataList extends React.PureComponent {
   static propTypes = {
-    items: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+    items: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types
     onSortChange: PropTypes.func.isRequired,
     onRemoveItem: PropTypes.func.isRequired,
   };

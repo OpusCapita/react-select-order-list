@@ -3,6 +3,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
+import { List } from 'immutable';
 
 import SelectedDataList from '../../../src/list-control/selected-list/selected-list.component';
 
@@ -11,7 +12,7 @@ describe('selected list component', function describe() {
     const props = {
       onSortChange: () => {},
       onRemoveItem: () => {},
-      items: [
+      items: List([
         {
           key: 1,
           label: 'one',
@@ -30,7 +31,7 @@ describe('selected list component', function describe() {
           isSelected: true,
           priority: 0,
         },
-      ],
+      ]),
     };
     const wrapper = mount(<SelectedDataList {...props} />);
     expect(wrapper.find('.oc-icon-remove').exists()).to.equal(true);

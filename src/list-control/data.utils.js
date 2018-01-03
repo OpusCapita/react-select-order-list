@@ -1,4 +1,5 @@
 /* eslint-disable no-nested-ternary */
+import { List } from 'immutable';
 import { arrayMove } from 'react-sortable-hoc';
 
 const escapeRegExp = /[-\\^$*+?.()|[\]{}]/g;
@@ -26,7 +27,10 @@ export default {
     return sortedData.filter(d => d.isSelected === true);
   },
 
-  changeDataSort: (data, oldIndex, newIndex) => arrayMove(data, oldIndex, newIndex),
+  changeDataSort(items, oldIndex, newIndex) {
+    const data = arrayMove(items.toArray(), oldIndex, newIndex);
+    return List(data);
+  },
 
   filterData: (data, keyword) => {
     let filteredData;
@@ -38,4 +42,6 @@ export default {
     }
     return filteredData;
   },
+
+
 };

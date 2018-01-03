@@ -1,4 +1,5 @@
 import React from 'react';
+import { List } from 'immutable';
 import { SelectOrderList } from '../../../src/index';
 import '../../../src/list-control/react-select-order-list.component.scss';
 import './style.scss';
@@ -7,8 +8,8 @@ export default class ListItemsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedData: [],
-      availableData: [
+      selectedData: List(),
+      availableData: List([
         {
           key: 1,
           label: 'one',
@@ -27,7 +28,7 @@ export default class ListItemsView extends React.Component {
           isSelected: true,
           priority: 0,
         },
-      ],
+      ]),
     };
   }
 

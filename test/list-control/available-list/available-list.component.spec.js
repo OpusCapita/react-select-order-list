@@ -3,6 +3,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
+import { List } from 'immutable';
 import AvailableColumnsList from '../../../src/list-control/available-list/available-list.component';
 
 describe('available list component', function describe() {
@@ -10,7 +11,7 @@ describe('available list component', function describe() {
     const props = {
       onSelectItem: () => {},
       onDeselectItem: () => {},
-      items: [
+      items: List([
         {
           key: 1,
           label: 'one',
@@ -29,7 +30,7 @@ describe('available list component', function describe() {
           isSelected: true,
           priority: 0,
         },
-      ],
+      ]),
     };
     const wrapper = mount(<AvailableColumnsList {...props} />);
     expect(wrapper.find('.oc-available-data-list').exists()).to.equal(true);

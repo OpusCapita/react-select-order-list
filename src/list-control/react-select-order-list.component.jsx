@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
   Grid,
   Row,
@@ -16,8 +17,8 @@ import './react-select-order-list.component.scss';
 
 export default class SelectOrderList extends React.PureComponent {
   static propTypes = {
-    availableData: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
-    selectedData: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+    availableData: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types
+    selectedData: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types
     availableListLabel: PropTypes.string,
     selectedListLabel: PropTypes.string,
     dataChange: PropTypes.func.isRequired,
@@ -55,7 +56,7 @@ export default class SelectOrderList extends React.PureComponent {
       );
 
     selectedData.forEach((data, i) => {
-      selectedData[i].priority = i;
+      selectedData.get(i).priority = i;
     });
     this.props.dataChange(this.props.availableData, selectedData);
   }
@@ -65,15 +66,15 @@ export default class SelectOrderList extends React.PureComponent {
     item.isSelected = true;
     const availableData = this.props.availableData.slice();
     const visibleAvailableData = this.state.visibleAvailableData.slice();
-    const selectedData = this.props.selectedData.slice();
-    item.priority = selectedData.length;
-    selectedData.push(item);
+    let selectedData = this.props.selectedData.slice();
+    item.priority = selectedData.size;
+    selectedData = selectedData.push(item);
     let i = availableData.findIndex((data => data.key === item.key));
-    availableData[i].isSelected = true;
+    availableData.get(i).isSelected = true;
     
     i = visibleAvailableData.findIndex((data => data.key === item.key));
     if (i > -1) {
-      visibleAvailableData[i].isSelected = true;
+      visibleAvailableData.get(i).isSelected = true;
     }
     this.setState({ visibleAvailableData });
     this.props.dataChange(availableData, selectedData);
@@ -84,17 +85,17 @@ export default class SelectOrderList extends React.PureComponent {
     const availableData = this.props.availableData;
     const visibleAvailableData = this.state.visibleAvailableData;
     
-    const selectedData = this.props.selectedData.slice();
+    let selectedData = this.props.selectedData.slice();
     let i = selectedData.findIndex((data => data.key === item.key));
     selectedData.filter(d => d.priority > i).forEach(e => e.priority -= 1);// eslint-disable-line no-return-assign
-    selectedData.splice(i, 1);
+    selectedData = selectedData.splice(i, 1);
 
     i = availableData.findIndex((data => data.key === item.key));
-    availableData[i].isSelected = false;
+    availableData.get(i).isSelected = false;
 
     i = visibleAvailableData.findIndex((data => data.key === item.key));
     if (i > -1) {
-      visibleAvailableData[i].isSelected = false;
+      visibleAvailableData.get(i).isSelected = false;
     }
 
     this.setState({ visibleAvailableData });
