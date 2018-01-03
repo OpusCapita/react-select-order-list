@@ -1,0 +1,80 @@
+// Font
+$oc-grid-font-size-icon:            1.8rem !default;
+$oc-grid-font-size-small:           1.2rem !default;
+$oc-grid-font-size-icon:            1.8rem !default;
+
+// Colors
+$oc-grid-color-border:              #D3DADE !default;
+$oc-grid-color-text:                #67707C !default;
+$oc-grid-color-border:              #D3DADE !default;
+
+  .oc-data-keyword-input {
+    border: 2px solid $oc-grid-color-border;
+  }
+  .oc-data-keyword-icon {
+    position: absolute;
+    font-size: $oc-grid-font-size-icon;
+    top: 8px;
+    right: 9px;
+    cursor: pointer;
+    color: $oc-grid-color-text;
+  }
+
+  .oc-available-data-list, .oc-selected-data-list {
+    height: 50vh;
+    overflow: auto;
+    font-size: $oc-grid-font-size-small;
+    padding: 5px;
+    border: 2px solid $oc-grid-color-border;
+  }
+.oc-available-data-item, .oc-selected-data-item {
+  z-index: 10000;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  .oc-available-data-item-icon,
+  .oc-selected-data-item-icon {
+    flex: 0 0 auto;
+    overflow: hidden;
+    min-height: 0px;
+    min-width: 0px;
+    font-size: $oc-grid-font-size-icon;
+  }
+  .oc-available-data-item-icon {
+    font-size: calc(#{$oc-grid-font-size-icon} + 0.9rem);
+    margin-right: 10px;
+    cursor: pointer;
+    &.fa-check-square {
+    font-size: calc(#{$oc-grid-font-size-icon} + 0.7rem);
+      font-weight: 900;
+    }
+  }
+  .oc-available-data-item-text,
+  .oc-selected-data-item-text {
+    flex: 1 1 auto;
+    overflow: hidden;
+    min-height: 0px;
+    min-width: 0px;
+  }
+  .oc-selected-data-dragging-icon {
+    margin-right: 10px;
+    path {
+      fill: $oc-grid-color-text;
+    }
+  }
+  .oc-selected-data-remove-icon {
+    margin-right: 17px;
+    path {
+      fill: $oc-grid-color-text;
+    }
+  }
+}
+
+.oc-selected-data-item {
+  cursor: pointer;
+}
+
+body > .oc-selected-data-item {
+  background: #eee;
+}
