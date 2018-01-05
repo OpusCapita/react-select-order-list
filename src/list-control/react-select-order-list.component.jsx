@@ -17,7 +17,7 @@ import './react-select-order-list.component.scss';
 
 export default class SelectOrderList extends React.PureComponent {
   static propTypes = {
-    availableData: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types
+    availableData: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types,max-len
     selectedData: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types
     availableListLabel: PropTypes.string,
     selectedListLabel: PropTypes.string,
@@ -71,7 +71,7 @@ export default class SelectOrderList extends React.PureComponent {
     selectedData = selectedData.push(item);
     let i = availableData.findIndex((data => data.key === item.key));
     availableData.get(i).isSelected = true;
-    
+
     i = visibleAvailableData.findIndex((data => data.key === item.key));
     if (i > -1) {
       visibleAvailableData.get(i).isSelected = true;
@@ -84,10 +84,10 @@ export default class SelectOrderList extends React.PureComponent {
     const item = Object.assign({}, selectedItem);
     const availableData = this.props.availableData;
     const visibleAvailableData = this.state.visibleAvailableData;
-    
+
     let selectedData = this.props.selectedData.slice();
     let i = selectedData.findIndex((data => data.key === item.key));
-    selectedData.filter(d => d.priority > i).forEach(e => e.priority -= 1);// eslint-disable-line no-return-assign
+    selectedData.filter(d => d.priority > i).forEach(e => e.priority -= 1);// eslint-disable-line no-return-assign,max-len
     selectedData = selectedData.splice(i, 1);
 
     i = availableData.findIndex((data => data.key === item.key));
