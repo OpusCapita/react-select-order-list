@@ -17,8 +17,8 @@ import './react-select-order-list.component.scss';
 
 export default class SelectOrderList extends React.PureComponent {
   static propTypes = {
-    availableData: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types,max-len
-    selectedData: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types
+    availableData: ImmutablePropTypes.list.isRequired,
+    selectedData: ImmutablePropTypes.list.isRequired,
     availableListLabel: PropTypes.string,
     selectedListLabel: PropTypes.string,
     dataChange: PropTypes.func.isRequired,
@@ -82,8 +82,8 @@ export default class SelectOrderList extends React.PureComponent {
 
   handleDeselectItem = (selectedItem) => {
     const item = Object.assign({}, selectedItem);
-    const availableData = this.props.availableData;
-    const visibleAvailableData = this.state.visibleAvailableData;
+    const { availableData } = this.props;
+    const { visibleAvailableData } = this.state;
 
     let selectedData = this.props.selectedData.slice();
     let i = selectedData.findIndex((data => data.key === item.key));
@@ -121,7 +121,7 @@ export default class SelectOrderList extends React.PureComponent {
           <Col xs={6}>
             <FormGroup>
               <FormControl
-                id={'oc-keyword'}
+                id="oc-keyword"
                 type="text"
                 name="keyword"
                 value={this.state.keyword}
@@ -136,7 +136,7 @@ export default class SelectOrderList extends React.PureComponent {
           <Col xs={6}>
             <FormGroup>
               <AvailableDataList
-                id={'oc-available-data'}
+                id="oc-available-data"
                 items={this.state.visibleAvailableData}
                 onSelectItem={this.handleSelectItem}
                 onDeselectItem={this.handleDeselectItem}
@@ -146,7 +146,7 @@ export default class SelectOrderList extends React.PureComponent {
           <Col xs={6}>
             <FormGroup>
               <SelectedDataList
-                id={'oc-selected-data'}
+                id="oc-selected-data"
                 items={this.props.selectedData}
                 onSortChange={this.handleSortChange}
                 onRemoveItem={this.handleDeselectItem}

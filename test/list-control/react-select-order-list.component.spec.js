@@ -5,8 +5,7 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 import { List } from 'immutable';
 
-import { SelectOrderList } from '../../src/list-control/index';
-import { debug, log } from 'util';
+import SelectOrderList from '../../src/list-control/index';
 
 describe('ListItems component', function describe() {
   it('should render and function correctly', function it() {

@@ -1,2 +1,3 @@
-export SelectOrderList from './react-select-order-list.component.jsx';
+import SelectOrderList from './react-select-order-list.component';
 
+export default SelectOrderList;

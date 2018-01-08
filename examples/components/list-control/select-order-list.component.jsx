@@ -53,8 +53,8 @@ export default class ListItemsView extends React.Component {
         <SelectOrderList
           availableData={this.state.availableData}
           selectedData={this.state.selectedData}
-          availableListLabel={'Available data'}
-          selectedListLabel={'Selected data'}
+          availableListLabel="Available data"
+          selectedListLabel="Selected data"
           dataChange={this.dataChange}
         />
       </div>

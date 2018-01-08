@@ -8,9 +8,7 @@ const escapeKeyword = keyword => keyword.replace(escapeRegExp, '\\$&');
 export default {
   getAvailableData: data => (
     data.map((d) => {
-      const key = d.key;
-      const label = d.label;
-      const isSelected = d.isSelected;
+      const { key, label, isSelected } = d;
       const priority = d.priority === undefined ? -1 : d.priority;
       return {
         key,
@@ -42,6 +40,5 @@ export default {
     }
     return filteredData;
   },
-
-
 };
+

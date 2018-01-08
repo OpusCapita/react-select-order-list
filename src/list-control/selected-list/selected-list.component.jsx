@@ -10,7 +10,7 @@ import {
 const SortableItem = SortableElement(({ value, handleItemRemove }) => (
   <div
     key={value.key}
-    className={'oc-selected-data-item'}
+    className="oc-selected-data-item"
   >
     <span className="oc-selected-data-item-text">
       {value.label}

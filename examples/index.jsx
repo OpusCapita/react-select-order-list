@@ -8,8 +8,10 @@ import './app.component.scss';
 
 require('../images/favicon.ico');
 
-render((
-  <Router history={hashHistory}>
-    <Route path="/" component={SelectOrderList} />
-  </Router>
-), document.getElementById('oc-examples'));
+render(
+  (
+    <Router history={hashHistory}>
+      <Route path="/" component={SelectOrderList} />
+    </Router>
+  ), document.getElementById('oc-examples'),
+);
