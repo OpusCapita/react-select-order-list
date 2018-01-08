@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from 'immutable';
-import { SelectOrderList } from '../../../src/index';
+import SelectOrderList from '../../../src/index';
 import '../../../src/list-control/react-select-order-list.component.scss';
 import './style.scss';
 
