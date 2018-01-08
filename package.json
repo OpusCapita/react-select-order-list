@@ -1,7 +1,7 @@
 {
   "author": "OpusCapita (www.opuscapita.com)",
   "name": "@opuscapita/react-select-order-list",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React component containing orderable and selectable list",
   "main": "lib/react-select-order-list.js",
   "scripts": {
@@ -103,8 +103,7 @@
     "webpack-notifier": "1.5.0",
     "write-file-webpack-plugin": "^4.2.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OpusCapita/react-select-order-list.git"
