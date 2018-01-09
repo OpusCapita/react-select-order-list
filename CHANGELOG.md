@@ -2,6 +2,9 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
+## 1.0.4
+* Changed library name at webpack.
+
 ## 1.0.3
 * Moved dependencies to devDependencies
 

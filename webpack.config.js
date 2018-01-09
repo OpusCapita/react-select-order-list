@@ -3,7 +3,7 @@ const merge = require('webpack-merge');
 const getBaseConfiguration = require('./webpack/base.config.js');
 const utils = require('./webpack/utils');
 
-const libraryName = 'react-list-items';
+const libraryName = 'react-select-order-list';
 
 const isProduction = utils.isProduction();
 
