@@ -19,8 +19,8 @@ export default class SelectOrderList extends React.PureComponent {
   static propTypes = {
     availableData: ImmutablePropTypes.list.isRequired,
     selectedData: ImmutablePropTypes.list.isRequired,
-    availableListLabel: PropTypes.string,
-    selectedListLabel: PropTypes.string,
+    availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+    selectedListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     dataChange: PropTypes.func.isRequired,
   };
 
