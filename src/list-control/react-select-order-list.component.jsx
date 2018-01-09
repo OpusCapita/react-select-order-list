@@ -22,11 +22,13 @@ export default class SelectOrderList extends React.PureComponent {
     availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     selectedListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     dataChange: PropTypes.func.isRequired,
+    searchPlaceholder: PropTypes.string,
   };
 
   static defaultProps = {
     availableListLabel: '',
     selectedListLabel: '',
+    searchPlaceholder: '',
   }
 
   constructor(props) {
@@ -108,22 +110,11 @@ export default class SelectOrderList extends React.PureComponent {
         <Row>
           <Col xs={6}>
             <FormGroup>
-              <ControlLabel>{this.props.availableListLabel}</ControlLabel>
-            </FormGroup>
-          </Col>
-          <Col xs={6}>
-            <FormGroup>
-              <ControlLabel>{this.props.selectedListLabel}</ControlLabel>
-            </FormGroup>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6}>
-            <FormGroup>
               <FormControl
                 id="oc-keyword"
                 type="text"
                 name="keyword"
+                placeholder={this.props.searchPlaceholder}
                 value={this.state.keyword}
                 onChange={this.handleKeywordChange}
                 className="oc-data-keyword-input"
@@ -135,6 +126,7 @@ export default class SelectOrderList extends React.PureComponent {
         <Row>
           <Col xs={6}>
             <FormGroup>
+              <ControlLabel>{this.props.availableListLabel}</ControlLabel>
               <AvailableDataList
                 id="oc-available-data"
                 items={this.state.visibleAvailableData}
@@ -145,6 +137,7 @@ export default class SelectOrderList extends React.PureComponent {
           </Col>
           <Col xs={6}>
             <FormGroup>
+              <ControlLabel>{this.props.selectedListLabel}</ControlLabel>
               <SelectedDataList
                 id="oc-selected-data"
                 items={this.props.selectedData}
