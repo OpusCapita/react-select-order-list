@@ -2,6 +2,11 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
+## next
+* Changed labels' types
+* FormControl: changed place and added placeholder
+* Moved label and list inside the same FormGroup
+
 ## 1.0.4
 * Changed library name at webpack.
 
