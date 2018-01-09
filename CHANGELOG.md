@@ -2,7 +2,7 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
-## next
+## 1.1.0
 * Changed labels' types
 * FormControl: changed place and added placeholder
 * Moved label and list inside the same FormGroup
