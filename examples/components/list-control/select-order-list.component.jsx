@@ -49,8 +49,8 @@ export default class ListItemsView extends React.Component {
     return sortedData.filter(d => d.isSelected === true);
   }
 
-  dataChange = (availableData, selectedData) => {
-    this.setState({ availableData, selectedData });
+  dataChange = (selectedData) => {
+    this.setState({ selectedData });
   }
 
   render() {
