@@ -29,6 +29,7 @@ export default class ListItemsView extends React.Component {
           priority: 0,
         },
       ]),
+      allSelected: false,
     };
   }
 
@@ -37,6 +38,11 @@ export default class ListItemsView extends React.Component {
       selectedData: this.getSelectedData(),
     });
   }
+
+  onAllSelectionChange = (allSelected) => {
+    this.setState({ allSelected });
+  }
+
   getSelectedData() {
     const sortedData = this.state.availableData.slice();
     sortedData.sort((a, b) => a.priority > b.priority);
@@ -55,7 +61,10 @@ export default class ListItemsView extends React.Component {
           selectedData={this.state.selectedData}
           availableListLabel="Available data"
           selectedListLabel="Selected data"
-          dataChange={this.dataChange}
+          allLabel="All"
+          allSelected={this.state.allSelected}
+          onDataSelectionChange={this.dataChange}
+          onAllSelectionChange={this.onAllSelectionChange}
         />
       </div>
     );

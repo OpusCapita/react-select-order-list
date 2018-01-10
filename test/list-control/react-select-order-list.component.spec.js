@@ -10,7 +10,8 @@ import SelectOrderList from '../../src/list-control/index';
 describe('ListItems component', function describe() {
   it('should render and function correctly', function it() {
     const props = {
-      dataChange: () => {},
+      onDataSelectionChange: () => {},
+      onAllSelectionChange: () => {},
       avaibleListLabel: '',
       selectedListLabel: '',
       availableData: List([

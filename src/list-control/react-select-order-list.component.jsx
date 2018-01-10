@@ -3,12 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
-  Grid,
-  Row,
+  Checkbox,
   Col,
-  FormGroup,
   ControlLabel,
-  FormControl } from 'react-bootstrap';
+  FormControl,
+  FormGroup,
+  Grid,
+  Row } from 'react-bootstrap';
 import 'font-awesome/scss/font-awesome.scss';
 import AvailableDataList from './available-list/available-list.component';
 import SelectedDataList from './selected-list/selected-list.component';
@@ -19,16 +20,21 @@ export default class SelectOrderList extends React.PureComponent {
   static propTypes = {
     availableData: ImmutablePropTypes.list.isRequired,
     selectedData: ImmutablePropTypes.list.isRequired,
+    onDataSelectionChange: PropTypes.func.isRequired,
+    onAllSelectionChange: PropTypes.func.isRequired,
     availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     selectedListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-    dataChange: PropTypes.func.isRequired,
+    allLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     searchPlaceholder: PropTypes.string,
+    allSelected: PropTypes.bool,
   };
 
   static defaultProps = {
     availableListLabel: '',
     selectedListLabel: '',
     searchPlaceholder: '',
+    allSelected: false,
+    allLabel: '',
   }
 
   constructor(props) {
@@ -37,6 +43,10 @@ export default class SelectOrderList extends React.PureComponent {
       keyword: '',
       visibleAvailableData: this.props.availableData,
     };
+  }
+
+  onAllSelectionChange = () => {
+    this.props.onAllSelectionChange(!this.props.allSelected);
   }
 
   handleKeywordChange = (e) => {
@@ -60,7 +70,7 @@ export default class SelectOrderList extends React.PureComponent {
     selectedData.forEach((data, i) => {
       selectedData.get(i).priority = i;
     });
-    this.props.dataChange(this.props.availableData, selectedData);
+    this.props.onDataSelectionChange(this.props.availableData, selectedData);
   }
 
   handleSelectItem = (selectedItem) => {
@@ -79,7 +89,7 @@ export default class SelectOrderList extends React.PureComponent {
       visibleAvailableData.get(i).isSelected = true;
     }
     this.setState({ visibleAvailableData });
-    this.props.dataChange(availableData, selectedData);
+    this.props.onDataSelectionChange(availableData, selectedData);
   }
 
   handleDeselectItem = (selectedItem) => {
@@ -101,7 +111,10 @@ export default class SelectOrderList extends React.PureComponent {
     }
 
     this.setState({ visibleAvailableData });
-    this.props.dataChange(availableData, selectedData);
+    this.props.onDataSelectionChange(availableData, selectedData);
+    if (this.props.allSelected) {
+      this.props.onAllSelectionChange(false);
+    }
   }
 
   render() {
@@ -126,7 +139,20 @@ export default class SelectOrderList extends React.PureComponent {
         <Row>
           <Col xs={6}>
             <FormGroup>
-              <ControlLabel>{this.props.availableListLabel}</ControlLabel>
+              <Row>
+                <Col xs={6}>
+                  <ControlLabel>{this.props.availableListLabel}</ControlLabel>
+                </Col>
+                <Col xs={6}>
+                  <Checkbox
+                    onChange={this.onAllSelectionChange}
+                    checked={this.props.allSelected}
+                    className="oc-react-select-order-list-all"
+                  >
+                    {this.props.allLabel}
+                  </Checkbox>
+                </Col>
+              </Row>
               <AvailableDataList
                 id="oc-available-data"
                 items={this.state.visibleAvailableData}
