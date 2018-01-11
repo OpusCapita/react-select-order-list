@@ -31,7 +31,6 @@ function getBaseConfiguration(config) {
           ],
           exclude: {
             test: path.resolve(__dirname, '..', 'node_modules'),
-            exclude: path.resolve(__dirname, '..', 'node_modules', '@opuscapita', 'react-perfect-scrollbar'),
           },
         },
         {
