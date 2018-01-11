@@ -1,6 +1,8 @@
 # react-select-order-list
 ### [Demo](https://opuscapita.github.io/react-select-order-list)
 
+### [API](./src/list-control/README.md)
+
 **SelectOrderList** component renders two lists. First contains data and we can check and uncheck them. After that selected row appears on second list where we can sort data by drag and drop function. We also have delete option avaiable from second list by remove icon.
 
 ### Installation
