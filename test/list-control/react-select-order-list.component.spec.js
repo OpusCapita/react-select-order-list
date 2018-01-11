@@ -10,42 +10,28 @@ import SelectOrderList from '../../src/list-control/index';
 describe('ListItems component', function describe() {
   it('should render and function correctly', function it() {
     const props = {
-      onDataSelectionChange: () => {},
-      onAllSelectionChange: () => {},
-      avaibleListLabel: '',
+      onChange: () => {},
+      dataSelectionId: 'allSelected',
+      allSelectionId: 'selectedData',
+      availableListLabel: '',
       selectedListLabel: '',
       availableData: List([
         {
-          key: 1,
           label: 'one',
-          isSelected: false,
-          priority: -1,
         },
         {
-          key: 2,
           label: 'two',
-          isSelected: true,
-          priority: 1,
         },
         {
-          key: 3,
           label: 'three',
-          isSelected: true,
-          priority: 0,
         },
       ]),
       selectedData: List([
         {
-          key: 2,
           label: 'two',
-          isSelected: true,
-          priority: 1,
         },
         {
-          key: 3,
           label: 'three',
-          isSelected: true,
-          priority: 0,
         },
       ]),
     };
