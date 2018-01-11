@@ -84,13 +84,9 @@ export default class SelectOrderList extends React.PureComponent {
     } else if (this.props.selectedData.size === 0) {
       selectedData = this.sortDataAlphabetically(this.props.availableData);
     } else {
-      selectedData = this.props.selectedData.toJS();
-      this.props.availableData.forEach((item) => {
-        if (selectedData.findIndex(data => (data.label === item.label)) === -1) {
-          selectedData.push(item);
-        }
-      });
-      selectedData = List(selectedData);
+      const unselectedData = this.props.availableData.filter(item =>
+        (this.props.selectedData.findIndex(data => (data.label === item.label)) === -1));
+      selectedData = this.props.selectedData.concat(unselectedData);
     }
     this.props.onChange({
       [this.props.allSelectionId]: !this.props.allSelected,
@@ -172,10 +168,10 @@ export default class SelectOrderList extends React.PureComponent {
       label: selectedItem.label,
       value: selectedItem.value,
     };
-    const selectedData = [...this.state.selectedData.toJS(), item];
+    const selectedData = this.state.selectedData.push(item);
     this.props.onChange({
       [this.props.allSelectionId]: selectedData.length === this.props.availableData.size,
-      [this.props.dataSelectionId]: List(selectedData),
+      [this.props.dataSelectionId]: selectedData,
     });
   }
 
