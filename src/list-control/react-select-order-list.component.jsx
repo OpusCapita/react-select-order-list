@@ -41,7 +41,7 @@ export default class SelectOrderList extends React.PureComponent {
     selectedData: List(),
     availableListLabel: '',
     selectedListLabel: '',
-    searchPlaceholder: '',
+    searchPlaceholder: 'Search...',
     allSelected: false,
     allLabel: '',
   }
