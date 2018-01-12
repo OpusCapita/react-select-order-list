@@ -11,6 +11,7 @@ $oc-grid-color-border:              #D3DADE !default;
 .oc-data-keyword-input {
   border: 2px solid $oc-grid-color-border;
 }
+
 .oc-data-keyword-icon {
   position: absolute;
   font-size: $oc-grid-font-size-icon;
@@ -82,7 +83,6 @@ $oc-grid-color-border:              #D3DADE !default;
     margin-top: 0px;
     float: right;
   }
-
   .container-fluid {
     padding: 0;
   }  
