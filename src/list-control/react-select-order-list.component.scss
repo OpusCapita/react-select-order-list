@@ -8,10 +8,6 @@ $oc-grid-color-border:              #D3DADE !default;
 $oc-grid-color-text:                #67707C !default;
 $oc-grid-color-border:              #D3DADE !default;
 
-.oc-data-keyword-input {
-  border: 2px solid $oc-grid-color-border;
-}
-
 .oc-data-keyword-icon {
   position: absolute;
   font-size: $oc-grid-font-size-icon;
@@ -26,7 +22,7 @@ $oc-grid-color-border:              #D3DADE !default;
   overflow: auto;
   font-size: $oc-grid-font-size-small;
   padding: 5px;
-  border: 2px solid $oc-grid-color-border;
+  border: 1px solid $oc-grid-color-border;
 }
 
 .oc-available-data-item, .oc-selected-data-item {
@@ -66,7 +62,6 @@ $oc-grid-color-border:              #D3DADE !default;
     }
   }
   .oc-selected-data-remove-icon {
-    margin-right: 17px;
     path {
       fill: $oc-grid-color-text;
     }
@@ -78,6 +73,9 @@ $oc-grid-color-border:              #D3DADE !default;
 }
 
 .oc-select-order-list {
+  .oc-data-keyword-input {
+    border: 1px solid $oc-grid-color-border;
+  }
   .oc-react-select-order-list-all.checkbox {
     margin-bottom: 0px;
     margin-top: 0px;
