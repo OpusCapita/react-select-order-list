@@ -2,6 +2,9 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
+## 1.2.0
+* Changed status and props handling
+
 ## 1.1.0
 * Changed labels' types
 * FormControl: changed place and added placeholder
