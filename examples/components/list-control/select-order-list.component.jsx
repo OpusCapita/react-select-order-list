@@ -8,43 +8,41 @@ export default class ListItemsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedData: List(),
       availableData: List([
         {
-          key: 1,
           label: 'one',
-          isSelected: false,
-          priority: -1,
+          value: 'one',
         },
         {
-          key: 2,
           label: 'two',
-          isSelected: true,
-          priority: 1,
+          value: 'two',
         },
         {
-          key: 3,
           label: 'three',
-          isSelected: true,
-          priority: 0,
+          value: 'three',
         },
       ]),
+      selectedData: List([
+        {
+          label: 'two',
+          value: 'two',
+        },
+        {
+          label: 'three',
+          value: 'three',
+        },
+      ]),
+      allSelected: false,
     };
   }
 
-  componentWillMount() {
-    this.setState({
-      selectedData: this.getSelectedData(),
-    });
-  }
-  getSelectedData() {
-    const sortedData = this.state.availableData.slice();
-    sortedData.sort((a, b) => a.priority > b.priority);
-    return sortedData.filter(d => d.isSelected === true);
+  onAllSelectionChange = (allSelected) => {
+    const selectedData = allSelected ? this.state.availableData : List();
+    this.setState({ allSelected, selectedData });
   }
 
-  dataChange = (availableData, selectedData) => {
-    this.setState({ availableData, selectedData });
+  onChange =(data) => {
+    this.setState(data);
   }
 
   render() {
@@ -53,9 +51,13 @@ export default class ListItemsView extends React.Component {
         <SelectOrderList
           availableData={this.state.availableData}
           selectedData={this.state.selectedData}
+          dataSelectionId="selectedData"
+          allSelectionId="allSelected"
           availableListLabel="Available data"
           selectedListLabel="Selected data"
-          dataChange={this.dataChange}
+          allLabel="All"
+          allSelected={this.state.allSelected}
+          onChange={this.onChange}
         />
       </div>
     );
