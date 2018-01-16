@@ -8,25 +8,23 @@ $oc-grid-color-border:              #D3DADE !default;
 $oc-grid-color-text:                #67707C !default;
 $oc-grid-color-border:              #D3DADE !default;
 
-  .oc-data-keyword-input {
-    border: 2px solid $oc-grid-color-border;
-  }
-  .oc-data-keyword-icon {
-    position: absolute;
-    font-size: $oc-grid-font-size-icon;
-    top: 8px;
-    right: 9px;
-    cursor: pointer;
-    color: $oc-grid-color-text;
-  }
+.oc-data-keyword-icon {
+  position: absolute;
+  font-size: $oc-grid-font-size-icon;
+  top: 8px;
+  right: 9px;
+  cursor: pointer;
+  color: $oc-grid-color-text;
+}
 
-  .oc-available-data-list, .oc-selected-data-list {
-    height: 50vh;
-    overflow: auto;
-    font-size: $oc-grid-font-size-small;
-    padding: 5px;
-    border: 2px solid $oc-grid-color-border;
-  }
+.oc-available-data-list, .oc-selected-data-list {
+  height: 50vh;
+  overflow: auto;
+  font-size: $oc-grid-font-size-small;
+  padding: 5px;
+  border: 1px solid $oc-grid-color-border;
+}
+
 .oc-available-data-item, .oc-selected-data-item {
   z-index: 10000;
   padding: 5px;
@@ -64,7 +62,6 @@ $oc-grid-color-border:              #D3DADE !default;
     }
   }
   .oc-selected-data-remove-icon {
-    margin-right: 17px;
     path {
       fill: $oc-grid-color-text;
     }
@@ -73,6 +70,20 @@ $oc-grid-color-border:              #D3DADE !default;
 
 .oc-selected-data-item {
   cursor: pointer;
+}
+
+.oc-select-order-list {
+  .oc-data-keyword-input {
+    border: 1px solid $oc-grid-color-border;
+  }
+  .oc-react-select-order-list-all.checkbox {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    float: right;
+  }
+  .container-fluid {
+    padding: 0;
+  }  
 }
 
 body > .oc-selected-data-item {
