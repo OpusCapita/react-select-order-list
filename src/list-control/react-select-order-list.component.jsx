@@ -49,10 +49,8 @@ export default class SelectOrderList extends React.PureComponent {
   }
 
   constructor(props) {
-    super(props);
-    const id = this.props.id ? `oc-select-order-list-${this.props.id}` : 'oc-select-order-list'    
+    super(props);    
     this.state = {
-      id,
       keyword: '',
       ...this.initData(),
     };
@@ -189,8 +187,9 @@ export default class SelectOrderList extends React.PureComponent {
   }
 
   render() {
+    const id = this.props.id ? `oc-select-order-list-${this.props.id}` : 'oc-select-order-list';
     return (
-      <Grid id={this.state.id} fluid>
+      <Grid id={id} fluid>
         <Row>
           <Col xs={6}>
             <FormGroup>
