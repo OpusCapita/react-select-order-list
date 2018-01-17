@@ -218,7 +218,7 @@ export default class SelectOrderList extends React.PureComponent {
                   <Checkbox
                     onChange={this.onAllSelectionChange}
                     checked={this.props.allSelected}
-                    className="oc-react-select-order-list-all"
+                    className="oc-select-order-list-all"
                   >
                     {this.props.allLabel}
                   </Checkbox>
