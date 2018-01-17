@@ -49,7 +49,7 @@ export default class SelectOrderList extends React.PureComponent {
   }
 
   constructor(props) {
-    super(props);    
+    super(props);
     this.state = {
       keyword: '',
       ...this.initData(),

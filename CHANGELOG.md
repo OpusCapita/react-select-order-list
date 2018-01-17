@@ -2,6 +2,10 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
+## 1.2.1
+* added id for main div
+* aligned checkbox
+
 ## 1.2.0
 * Changed status and props handling
 
