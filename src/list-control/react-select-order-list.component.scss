@@ -77,9 +77,16 @@ $oc-grid-color-border:              #D3DADE !default;
 }
 
 .oc-select-order-list-all.checkbox {
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin: 0;
   float: right;
+  label {
+    height: 3rem;
+    line-height: 3rem;
+    input {
+      height: 3rem;
+      margin: 0 0 0 -2rem;
+    }
+  }
 }
 
 .container-fluid {
