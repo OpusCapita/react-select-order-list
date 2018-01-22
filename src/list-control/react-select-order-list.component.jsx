@@ -158,6 +158,7 @@ export default class SelectOrderList extends React.PureComponent {
     selectedData = selectedData.map(data => ({
       label: data.label,
       value: data.value,
+      isLocked: data.isLocked,
     }));
 
     this.props.onChange({
