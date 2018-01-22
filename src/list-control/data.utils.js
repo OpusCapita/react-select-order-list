@@ -6,18 +6,6 @@ const escapeRegExp = /[-\\^$*+?.()|[\]{}]/g;
 const escapeKeyword = keyword => keyword.replace(escapeRegExp, '\\$&');
 
 export default {
-  getAvailableData: data => (
-    data.map((d) => {
-      const { key, label, isSelected } = d;
-      const priority = d.priority === undefined ? -1 : d.priority;
-      return {
-        key,
-        label,
-        isSelected,
-        priority,
-      };
-    })
-  ),
 
   getSelectedData: (visibleData) => {
     const sortedData = visibleData.slice();
@@ -26,7 +14,23 @@ export default {
   },
 
   changeDataSort(items, oldIndex, newIndex) {
-    const data = arrayMove(items.toArray(), oldIndex, newIndex);
+    let lockedItems = [];
+    for (let i = Math.min(oldIndex, newIndex) + 1; i < Math.max(oldIndex, newIndex); i += 1) {
+      const item = items.get(i);
+      if (item.isLocked) {
+        const x = { object: item, index: i };
+        lockedItems.push(x);
+      }
+    }
+    if (oldIndex < newIndex) {
+      lockedItems = lockedItems.reverse();
+    }
+    let data = arrayMove(items.toArray(), oldIndex, newIndex);
+    for (let i = 0; i < lockedItems.length; i += 1) {
+      const oi = data.indexOf(lockedItems[i].object);
+      const ni = lockedItems[i].index;
+      data = arrayMove(data, oi, ni);
+    }
     return List(data);
   },
 

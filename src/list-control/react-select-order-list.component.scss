@@ -6,6 +6,7 @@ $oc-grid-font-size-icon:            1.8rem !default;
 // Colors
 $oc-grid-color-border:              #D3DADE !default;
 $oc-grid-color-text:                #67707C !default;
+$oc-grid-color-text-disabled:       #CCCCCC !default;
 $oc-grid-color-border:              #D3DADE !default;
 
 .oc-data-keyword-icon {
@@ -43,6 +44,11 @@ $oc-grid-color-border:              #D3DADE !default;
     font-size: calc(#{$oc-grid-font-size-icon} + 0.9rem);
     margin-right: 10px;
     cursor: pointer;
+    &.is-locked {
+      color: $oc-grid-color-text-disabled;
+      cursor: default;
+      font-weight: normal;
+    }
     &.fa-check-square {
     font-size: calc(#{$oc-grid-font-size-icon} + 0.7rem);
       font-weight: 900;
@@ -56,6 +62,12 @@ $oc-grid-color-border:              #D3DADE !default;
     min-width: 0px;
   }
   .oc-selected-data-dragging-icon {
+    margin-right: 10px;
+    path {
+      fill: $oc-grid-color-text;
+    }
+  }
+  .oc-datagrid-selected-columns-locked-icon {
     margin-right: 10px;
     path {
       fill: $oc-grid-color-text;
@@ -88,4 +100,9 @@ $oc-grid-color-border:              #D3DADE !default;
 
 body > .oc-selected-data-item {
   background: #eee;
+}
+
+.oc-selected-data-item.locked {
+  cursor: default;
+  background: inherit;
 }

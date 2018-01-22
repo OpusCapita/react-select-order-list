@@ -27,6 +27,7 @@ export default class AvailableColumnsList extends React.Component {
             <DataItem
               key={item.key}
               isSelected={item.isSelected}
+              isLocked={item.isLocked}
               label={item.label}
               handleItemClick={this.handleItemClick(item)}
             />

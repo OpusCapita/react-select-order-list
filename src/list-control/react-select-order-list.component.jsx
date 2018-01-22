@@ -22,6 +22,7 @@ export default class SelectOrderList extends React.PureComponent {
     availableData: ImmutablePropTypes.listOf(PropTypes.shape({
       label: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
       value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
+      isLocked: PropTypes.bool,
     })).isRequired,
     onChange: PropTypes.func.isRequired,
     dataSelectionId: PropTypes.string.isRequired,
@@ -29,6 +30,7 @@ export default class SelectOrderList extends React.PureComponent {
     selectedData: ImmutablePropTypes.listOf(PropTypes.shape({
       label: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
       value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
+      isLocked: PropTypes.bool,
     })),
     availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     selectedListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
@@ -62,7 +64,6 @@ export default class SelectOrderList extends React.PureComponent {
         isSelected: nextProps.allSelected || nextProps.selectedData.filter(data =>
           (data.label === item.label)).size !== 0,
       }));
-
     const selectedData = nextProps.selectedData.map((item, index) => ({
       ...item,
       key: index,
@@ -96,7 +97,6 @@ export default class SelectOrderList extends React.PureComponent {
 
   initData = () => {
     const availableData = this.initAvailableData();
-
     let selectedData;
     if (this.props.allSelected) {
       selectedData = availableData;
@@ -145,13 +145,16 @@ export default class SelectOrderList extends React.PureComponent {
   }
 
   handleSortChange = ({ oldIndex, newIndex }) => {
+    if (newIndex === null || newIndex === oldIndex) {
+      return;
+    }
+
     let selectedData =
       Utils.changeDataSort(
         this.state.selectedData,
         oldIndex,
         newIndex,
       );
-
     selectedData = selectedData.map(data => ({
       label: data.label,
       value: data.value,
@@ -167,6 +170,7 @@ export default class SelectOrderList extends React.PureComponent {
     const item = {
       label: selectedItem.label,
       value: selectedItem.value,
+      isLocked: false,
     };
     const selectedData = this.state.selectedData.push(item);
     this.props.onChange({
