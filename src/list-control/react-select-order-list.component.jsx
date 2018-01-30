@@ -22,7 +22,6 @@ export default class SelectOrderList extends React.PureComponent {
     availableData: ImmutablePropTypes.listOf(PropTypes.shape({
       label: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
       value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
-      isLocked: PropTypes.bool,
     })).isRequired,
     onChange: PropTypes.func.isRequired,
     dataSelectionId: PropTypes.string.isRequired,
@@ -30,7 +29,6 @@ export default class SelectOrderList extends React.PureComponent {
     selectedData: ImmutablePropTypes.listOf(PropTypes.shape({
       label: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
       value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
-      isLocked: PropTypes.bool,
     })),
     availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     selectedListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
@@ -100,13 +98,14 @@ export default class SelectOrderList extends React.PureComponent {
     const availableData = this.initAvailableData();
     let selectedData;
     if (this.props.allSelected) {
-      selectedData = availableData;
+      selectedData = availableData.filter(item => item.isSelected);
     } else {
       selectedData = this.props.selectedData.map((item, index) => ({
         ...item,
         key: index,
         priority: index,
         isSelected: true,
+        isLocked: item.isLocked === undefined ? false : item.isLocked,
       }));
     }
 
@@ -124,8 +123,9 @@ export default class SelectOrderList extends React.PureComponent {
       ...item,
       key: index,
       priority: index,
-      isSelected: props.allSelected || props.selectedData.filter(data =>
+      isSelected: (item.isLocked === true && props.allSelected) || props.selectedData.filter(data =>
         (data.label === item.label)).size !== 0,
+      isLocked: item.isLocked === undefined ? false : item.isLocked,
     }));
   }
 

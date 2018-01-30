@@ -29,20 +29,15 @@ export default class ListItemsView extends React.Component {
         {
           label: 'one',
           value: 'one',
-          isLocked: false,
-          isSelected: true,
         },
         {
           label: 'two',
           value: 'two',
           isLocked: true,
-          isSelected: true,
         },
         {
           label: 'three',
           value: 'three',
-          isLocked: false,
-          isSelected: true,
         },
       ]),
       allSelected: false,

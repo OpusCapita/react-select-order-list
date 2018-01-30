@@ -25,7 +25,7 @@ const SortableItem = SortableElement(({ value, handleItemRemove }) => (
     {value.isLocked && <Icon
       type="indicator"
       name="locked"
-      className="oc-datagrid-selected-columns-locked-icon"
+      className="oc-selected-data-item-locked-icon"
       width={30}
       height={30}
     />}

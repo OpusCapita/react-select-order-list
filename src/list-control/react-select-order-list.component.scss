@@ -1,29 +1,27 @@
-// Font
-$oc-grid-font-size-icon:            1.8rem !default;
-$oc-grid-font-size-small:           1.2rem !default;
-$oc-grid-font-size-icon:            1.8rem !default;
 
-// Colors
-$oc-grid-color-border:              #D3DADE !default;
-$oc-grid-color-text:                #67707C !default;
-$oc-grid-color-text-disabled:       #CCCCCC !default;
-$oc-grid-color-border:              #D3DADE !default;
+@import "../../styles/_colors.scss";
+
+// Font
+$oc-font-size-icon:            1.8rem !default;
+$oc-font-size-small:           1.2rem !default;
+$oc-font-size-icon:            1.8rem !default;
+
 
 .oc-data-keyword-icon {
   position: absolute;
-  font-size: $oc-grid-font-size-icon;
+  font-size: $oc-font-size-icon;
   top: 8px;
   right: 9px;
   cursor: pointer;
-  color: $oc-grid-color-text;
+  color: $oc-color-azure;
 }
 
 .oc-available-data-list, .oc-selected-data-list {
   height: 50vh;
   overflow: auto;
-  font-size: $oc-grid-font-size-small;
+  font-size: $oc-font-size-small;
   padding: 5px;
-  border: 1px solid $oc-grid-color-border;
+  border: 1px solid $oc-color-support-lightgray;
 }
 
 .oc-available-data-item, .oc-selected-data-item {
@@ -38,19 +36,19 @@ $oc-grid-color-border:              #D3DADE !default;
     overflow: hidden;
     min-height: 0px;
     min-width: 0px;
-    font-size: $oc-grid-font-size-icon;
+    font-size: $oc-font-size-icon;
   }
   .oc-available-data-item-icon {
-    font-size: calc(#{$oc-grid-font-size-icon} + 0.9rem);
+    font-size: calc(#{$oc-font-size-icon} + 0.9rem);
     margin-right: 10px;
     cursor: pointer;
     &.is-locked {
-      color: $oc-grid-color-text-disabled;
+      color: $oc-color-gray;
       cursor: default;
       font-weight: normal;
     }
     &.fa-check-square {
-    font-size: calc(#{$oc-grid-font-size-icon} + 0.7rem);
+    font-size: calc(#{$oc-font-size-icon} + 0.7rem);
       font-weight: 900;
     }
   }
@@ -64,18 +62,18 @@ $oc-grid-color-border:              #D3DADE !default;
   .oc-selected-data-dragging-icon {
     margin-right: 10px;
     path {
-      fill: $oc-grid-color-text;
+      fill: $oc-color-azure;
     }
   }
-  .oc-datagrid-selected-columns-locked-icon {
+  .oc-selected-data-item-locked-icon {
     margin-right: 10px;
     path {
-      fill: $oc-grid-color-text;
+      fill: $oc-color-azure;
     }
   }
   .oc-selected-data-remove-icon {
     path {
-      fill: $oc-grid-color-text;
+      fill: $oc-color-azure;
     }
   }
 }
@@ -86,7 +84,7 @@ $oc-grid-color-border:              #D3DADE !default;
 
 .oc-select-order-list {
   .oc-data-keyword-input {
-    border: 1px solid $oc-grid-color-border;
+    border: 1px solid $oc-color-support-lightgray;
   }
   .oc-react-select-order-list-all.checkbox {
     margin-bottom: 0px;

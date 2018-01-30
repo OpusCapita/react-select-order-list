@@ -18,8 +18,7 @@ export default {
     for (let i = Math.min(oldIndex, newIndex) + 1; i < Math.max(oldIndex, newIndex); i += 1) {
       const item = items.get(i);
       if (item.isLocked) {
-        const x = { object: item, index: i };
-        lockedItems.push(x);
+        lockedItems.push({ object: item, index: i });
       }
     }
     if (oldIndex < newIndex) {
@@ -27,9 +26,9 @@ export default {
     }
     let data = arrayMove(items.toArray(), oldIndex, newIndex);
     for (let i = 0; i < lockedItems.length; i += 1) {
-      const oi = data.indexOf(lockedItems[i].object);
-      const ni = lockedItems[i].index;
-      data = arrayMove(data, oi, ni);
+      const oldItemIndex = data.indexOf(lockedItems[i].object);
+      const newItemIndex = lockedItems[i].index;
+      data = arrayMove(data, oldItemIndex, newItemIndex);
     }
     return List(data);
   },
