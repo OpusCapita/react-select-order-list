@@ -10,19 +10,26 @@ import {
 const SortableItem = SortableElement(({ value, handleItemRemove }) => (
   <div
     key={value.key}
-    className="oc-selected-data-item"
+    className={`oc-selected-data-item${value.isLocked ? ' locked' : ''}`}
   >
     <span className="oc-selected-data-item-text">
       {value.label}
     </span>
-    {<Icon
+    {!value.isLocked && <Icon
       type="indicator"
       name="draggingArrows"
       className="oc-selected-data-dragging-icon"
       width={20}
       height={20}
     />}
-    {<Icon
+    {value.isLocked && <Icon
+      type="indicator"
+      name="locked"
+      className="oc-selected-data-item-locked-icon"
+      width={30}
+      height={30}
+    />}
+    {!value.isLocked && <Icon
       type="indicator"
       name="remove"
       className="oc-selected-data-remove-icon"
@@ -41,6 +48,7 @@ const SortableList = SortableContainer(({ items, handleItemRemove }) => (
           key={value.key}
           index={index}
           value={value}
+          disabled={value.isLocked}
           handleItemRemove={handleItemRemove(value)}
         />
       ))}
@@ -58,8 +66,12 @@ export default class SelectedDataList extends React.PureComponent {
   handleItemRemove = value => () => {
     this.props.onRemoveItem(value);
   }
-
-  shouldCancelStart = e => e.target.className.baseVal && e.target.className.baseVal.indexOf('oc-icon-remove') !== -1
+  shouldCancelStart = (e) => {
+    if (e.target.className.baseVal && e.target.className.baseVal.indexOf('oc-icon-remove') !== -1) {
+      return true;
+    }
+    return false;
+  }
 
   render() {
     return (

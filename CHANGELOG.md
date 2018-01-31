@@ -2,6 +2,11 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
+## 1.3.0
+* Added locking functionality to list items
+* Changed searchbar control
+* Added styles for checkbox
+
 ## 1.2.1
 * added id for main div
 * aligned checkbox
@@ -20,7 +25,7 @@
 ## 1.0.3
 * Moved dependencies to devDependencies
 
-## 1.0.2
+## 1.0.2 
 * Fixed example
 
 ## 1.0.1

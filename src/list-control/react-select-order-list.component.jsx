@@ -7,10 +7,10 @@ import {
   Checkbox,
   Col,
   ControlLabel,
-  FormControl,
   FormGroup,
   Grid,
   Row } from 'react-bootstrap';
+import { SearchBar } from '@opuscapita/react-searchbar';
 import 'font-awesome/scss/font-awesome.scss';
 import AvailableDataList from './available-list/available-list.component';
 import SelectedDataList from './selected-list/selected-list.component';
@@ -61,10 +61,10 @@ export default class SelectOrderList extends React.PureComponent {
       this.initAvailableData(nextProps) :
       this.state.availableData.map(item => ({
         ...item,
-        isSelected: nextProps.allSelected || nextProps.selectedData.filter(data =>
-          (data.label === item.label)).size !== 0,
+        isSelected: (item.isLocked === false && nextProps.allSelected) ||
+              nextProps.selectedData.filter(data =>
+                (data.label === item.label)).size !== 0,
       }));
-
     const selectedData = nextProps.selectedData.map((item, index) => ({
       ...item,
       key: index,
@@ -82,11 +82,11 @@ export default class SelectOrderList extends React.PureComponent {
   onAllSelectionChange = () => {
     let selectedData;
     if (this.props.allSelected) {
-      selectedData = List();
+      selectedData = this.state.selectedData.filter(data => data.isLocked === true);
     } else if (this.props.selectedData.size === 0) {
-      selectedData = this.sortDataAlphabetically(this.props.availableData);
+      selectedData = this.state.selectedData.concat(this.sortDataAlphabetically(this.props.availableData.filter(data => data.isLocked === false)));// eslint-disable-line max-len
     } else {
-      const unselectedData = this.props.availableData.filter(item =>
+      const unselectedData = this.props.availableData.filter(item => item.isLocked === false &&
         (this.props.selectedData.findIndex(data => (data.label === item.label)) === -1));
       selectedData = this.props.selectedData.concat(unselectedData);
     }
@@ -98,16 +98,16 @@ export default class SelectOrderList extends React.PureComponent {
 
   initData = () => {
     const availableData = this.initAvailableData();
-
     let selectedData;
     if (this.props.allSelected) {
-      selectedData = availableData;
+      selectedData = availableData.filter(item => item.isSelected);
     } else {
       selectedData = this.props.selectedData.map((item, index) => ({
         ...item,
         key: index,
         priority: index,
         isSelected: true,
+        isLocked: item.isLocked === undefined ? false : item.isLocked,
       }));
     }
 
@@ -125,8 +125,9 @@ export default class SelectOrderList extends React.PureComponent {
       ...item,
       key: index,
       priority: index,
-      isSelected: props.allSelected || props.selectedData.filter(data =>
+      isSelected: (item.isLocked === true && props.allSelected) || props.selectedData.filter(data =>
         (data.label === item.label)).size !== 0,
+      isLocked: item.isLocked === undefined ? false : item.isLocked,
     }));
   }
 
@@ -137,7 +138,7 @@ export default class SelectOrderList extends React.PureComponent {
   )
 
   handleKeywordChange = (e) => {
-    const keyword = e.target.value;
+    const keyword = e;
     const visibleAvailableData =
       Utils.filterData(
         this.state.availableData,
@@ -147,17 +148,16 @@ export default class SelectOrderList extends React.PureComponent {
   }
 
   handleSortChange = ({ oldIndex, newIndex }) => {
-    let selectedData =
+    if (newIndex === null || newIndex === oldIndex) {
+      return;
+    }
+
+    const selectedData =
       Utils.changeDataSort(
         this.state.selectedData,
         oldIndex,
         newIndex,
       );
-
-    selectedData = selectedData.map(data => ({
-      label: data.label,
-      value: data.value,
-    }));
 
     this.props.onChange({
       [this.props.allSelectionId]: selectedData.length === this.props.availableData.size,
@@ -169,6 +169,7 @@ export default class SelectOrderList extends React.PureComponent {
     const item = {
       label: selectedItem.label,
       value: selectedItem.value,
+      isLocked: false,
     };
     const selectedData = this.state.selectedData.push(item);
     this.props.onChange({
@@ -193,16 +194,13 @@ export default class SelectOrderList extends React.PureComponent {
         <Row>
           <Col xs={6}>
             <FormGroup>
-              <FormControl
-                id="oc-keyword"
-                type="text"
-                name="keyword"
-                placeholder={this.props.searchPlaceholder}
+              <SearchBar
+                searchPlaceHolder={this.props.searchPlaceholder}
                 value={this.state.keyword}
-                onChange={this.handleKeywordChange}
-                className="oc-data-keyword-input"
+                onSearch={this.handleKeywordChange}
+                inputClassName="oc-data-keyword-input"
+                dynamicSearchStartsFrom={1}
               />
-              <i className="oc-data-keyword-icon" name="search" />
             </FormGroup>
           </Col>
         </Row>

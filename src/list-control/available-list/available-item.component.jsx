@@ -7,12 +7,14 @@ import classNames from 'classnames';
 
 export default class DataItem extends React.PureComponent {
   static propTypes = {
+    isLocked: PropTypes.bool,
     isSelected: PropTypes.bool,
     label: PropTypes.node,
     handleItemClick: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
+    isLocked: false,
     isSelected: true,
     label: '',
   }
@@ -20,7 +22,7 @@ export default class DataItem extends React.PureComponent {
   renderIcon = () => (
     <i
       className={this.props.isSelected ? 'fa fa-check-square' : 'fa fa-square-o'}
-      onClick={this.props.handleItemClick}
+      onClick={this.props.isLocked ? undefined : this.props.handleItemClick}
     />
   )
 
@@ -28,6 +30,7 @@ export default class DataItem extends React.PureComponent {
     const { label } = this.props;
     const iconClassName = classNames({
       'oc-available-data-item-icon': true,
+      'is-locked': !!this.props.isLocked,
     });
 
     return (

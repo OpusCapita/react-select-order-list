@@ -39,7 +39,7 @@ describe('ListItems component', function describe() {
     expect(wrapper.find('.oc-data-keyword-input').exists()).to.equal(true);
     let spy;
     spy = sinon.spy(wrapper.instance(), 'handleKeywordChange');
-    wrapper.instance().handleKeywordChange({ target: { value: 'test' } });
+    wrapper.instance().handleKeywordChange('test');
     expect(spy.called).to.be.true;
     spy = sinon.spy(wrapper.instance(), 'handleSortChange');
     wrapper.instance().handleSortChange(1, 2);

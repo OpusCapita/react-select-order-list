@@ -12,20 +12,28 @@ export default class ListItemsView extends React.Component {
         {
           label: 'one',
           value: 'one',
+          isLocked: false,
         },
         {
           label: 'two',
           value: 'two',
+          isLocked: true,
         },
         {
           label: 'three',
           value: 'three',
+          isLocked: false,
         },
       ]),
       selectedData: List([
         {
+          label: 'one',
+          value: 'one',
+        },
+        {
           label: 'two',
           value: 'two',
+          isLocked: true,
         },
         {
           label: 'three',
