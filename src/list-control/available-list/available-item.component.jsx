@@ -3,7 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'font-awesome/scss/font-awesome.scss';
-import classNames from 'classnames';
 import { Checkbox } from 'react-bootstrap';
 
 export default class DataItem extends React.PureComponent {

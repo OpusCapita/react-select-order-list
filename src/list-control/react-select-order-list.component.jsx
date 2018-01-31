@@ -72,7 +72,7 @@ export default class SelectOrderList extends React.PureComponent {
       priority: index,
       isSelected: true,
     }));
-    
+
     this.setState({
       visibleAvailableData: Utils.filterData(availableData, this.state.keyword),
       availableData,
@@ -126,8 +126,9 @@ export default class SelectOrderList extends React.PureComponent {
       ...item,
       key: index,
       priority: index,
-      isSelected: (item.isLocked === false && props.allSelected) || props.selectedData.filter(data =>
-        (data.label === item.label)).size !== 0,
+      isSelected: (item.isLocked === false && props.allSelected) ||
+        props.selectedData.filter(data =>
+          (data.label === item.label)).size !== 0,
       isLocked: item.isLocked === undefined ? false : item.isLocked,
     }));
   }

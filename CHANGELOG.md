@@ -2,6 +2,10 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
+## 1.3.1
+* Fixed lock items after "All" click
+* Changed checkbox styl on avaiable list
+
 ## 1.3.0
 * Added locking functionality to list items
 * Changed searchbar control
