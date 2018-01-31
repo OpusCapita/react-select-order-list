@@ -1,7 +1,7 @@
 {
   "author": "OpusCapita (www.opuscapita.com)",
   "name": "@opuscapita/react-select-order-list",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "React component containing orderable and selectable list",
   "main": "lib/react-select-order-list.js",
   "scripts": {
