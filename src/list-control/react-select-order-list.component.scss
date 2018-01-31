@@ -38,21 +38,12 @@ $oc-font-size-icon:            1.8rem !default;
     min-width: 0px;
     font-size: $oc-font-size-icon;
   }
-  .oc-available-data-item-icon {
-    font-size: calc(#{$oc-font-size-icon} + 0.9rem);
-    margin-right: 10px;
-    cursor: pointer;
-    &.is-locked {
-      color: $oc-color-gray;
-      cursor: default;
-      font-weight: normal;
-    }
-    &.fa-check-square {
-    font-size: calc(#{$oc-font-size-icon} + 0.7rem);
-      font-weight: 900;
-    }
+  .oc-available-item-checkbox {
+    font-size: 1.4rem !important;
   }
-  .oc-available-data-item-text,
+  .oc-available-data-item-text {
+    padding-bottom: 7px,
+  }
   .oc-selected-data-item-text {
     flex: 1 1 auto;
     overflow: hidden;

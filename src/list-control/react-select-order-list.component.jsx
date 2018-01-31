@@ -64,6 +64,7 @@ export default class SelectOrderList extends React.PureComponent {
         isSelected: (item.isLocked === false && nextProps.allSelected) ||
               nextProps.selectedData.filter(data =>
                 (data.label === item.label)).size !== 0,
+        isLocked: item.isLocked === undefined ? false : item.isLocked,
       }));
     const selectedData = nextProps.selectedData.map((item, index) => ({
       ...item,
@@ -71,7 +72,7 @@ export default class SelectOrderList extends React.PureComponent {
       priority: index,
       isSelected: true,
     }));
-
+    
     this.setState({
       visibleAvailableData: Utils.filterData(availableData, this.state.keyword),
       availableData,
@@ -84,11 +85,11 @@ export default class SelectOrderList extends React.PureComponent {
     if (this.props.allSelected) {
       selectedData = this.state.selectedData.filter(data => data.isLocked === true);
     } else if (this.props.selectedData.size === 0) {
-      selectedData = this.state.selectedData.concat(this.sortDataAlphabetically(this.props.availableData.filter(data => data.isLocked === false)));// eslint-disable-line max-len
+      selectedData = this.state.selectedData.concat(this.sortDataAlphabetically(this.state.availableData.filter(data => data.isLocked === false)));// eslint-disable-line max-len
     } else {
-      const unselectedData = this.props.availableData.filter(item => item.isLocked === false &&
-        (this.props.selectedData.findIndex(data => (data.label === item.label)) === -1));
-      selectedData = this.props.selectedData.concat(unselectedData);
+      const unselectedData = this.state.availableData.filter(item => item.isLocked === false &&
+        (this.state.selectedData.findIndex(data => (data.label === item.label)) === -1));
+      selectedData = this.state.selectedData.concat(unselectedData);
     }
     this.props.onChange({
       [this.props.allSelectionId]: !this.props.allSelected,
@@ -125,7 +126,7 @@ export default class SelectOrderList extends React.PureComponent {
       ...item,
       key: index,
       priority: index,
-      isSelected: (item.isLocked === true && props.allSelected) || props.selectedData.filter(data =>
+      isSelected: (item.isLocked === false && props.allSelected) || props.selectedData.filter(data =>
         (data.label === item.label)).size !== 0,
       isLocked: item.isLocked === undefined ? false : item.isLocked,
     }));
@@ -180,7 +181,7 @@ export default class SelectOrderList extends React.PureComponent {
 
   handleDeselectItem = (selectedItem) => {
     const selectedData =
-      this.props.selectedData.filter(data => (data.label !== selectedItem.label));
+      this.state.selectedData.filter(data => (data.label !== selectedItem.label));
     this.props.onChange({
       [this.props.allSelectionId]: false,
       [this.props.dataSelectionId]: selectedData,

@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'font-awesome/scss/font-awesome.scss';
 import classNames from 'classnames';
+import { Checkbox } from 'react-bootstrap';
 
 export default class DataItem extends React.PureComponent {
   static propTypes = {
@@ -20,22 +21,18 @@ export default class DataItem extends React.PureComponent {
   }
 
   renderIcon = () => (
-    <i
-      className={this.props.isSelected ? 'fa fa-check-square' : 'fa fa-square-o'}
-      onClick={this.props.isLocked ? undefined : this.props.handleItemClick}
+    <Checkbox
+      onChange={this.props.isLocked ? undefined : this.props.handleItemClick}
+      checked={this.props.isSelected}
+      disabled={this.props.isLocked}
     />
   )
 
   render() {
     const { label } = this.props;
-    const iconClassName = classNames({
-      'oc-available-data-item-icon': true,
-      'is-locked': !!this.props.isLocked,
-    });
-
     return (
       <div className="oc-available-data-item">
-        <div className={iconClassName}>
+        <div className="oc-available-item-checkbox">
           {this.renderIcon()}
         </div>
         <span className="oc-available-data-item-text">
