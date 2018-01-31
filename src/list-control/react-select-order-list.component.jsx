@@ -26,6 +26,7 @@ export default class SelectOrderList extends React.PureComponent {
     onChange: PropTypes.func.isRequired,
     dataSelectionId: PropTypes.string.isRequired,
     allSelectionId: PropTypes.string.isRequired,
+    id: PropTypes.string,
     selectedData: ImmutablePropTypes.listOf(PropTypes.shape({
       label: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
       value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
@@ -39,6 +40,7 @@ export default class SelectOrderList extends React.PureComponent {
 
   static defaultProps = {
     selectedData: List(),
+    id: '',
     availableListLabel: '',
     selectedListLabel: '',
     searchPlaceholder: 'Search...',
@@ -186,8 +188,9 @@ export default class SelectOrderList extends React.PureComponent {
   }
 
   render() {
+    const id = this.props.id ? `oc-select-order-list-${this.props.id}` : 'oc-select-order-list';
     return (
-      <Grid fluid>
+      <Grid id={id} fluid>
         <Row>
           <Col xs={6}>
             <FormGroup>
@@ -212,7 +215,7 @@ export default class SelectOrderList extends React.PureComponent {
                   <Checkbox
                     onChange={this.onAllSelectionChange}
                     checked={this.props.allSelected}
-                    className="oc-react-select-order-list-all"
+                    className="oc-select-order-list-all"
                   >
                     {this.props.allLabel}
                   </Checkbox>
