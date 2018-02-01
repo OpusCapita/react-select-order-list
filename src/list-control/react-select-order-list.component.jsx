@@ -87,7 +87,7 @@ export default class SelectOrderList extends React.PureComponent {
     } else if (this.props.selectedData.size === 0) {
       selectedData = this.state.selectedData.concat(this.sortDataAlphabetically(this.state.availableData.filter(data => data.isLocked === false)));// eslint-disable-line max-len
     } else {
-      const unselectedData = this.state.availableData.filter(item => item.isLocked === false &&
+      const unselectedData = this.state.availableData.filter(item => !item.isLocked &&
         (this.state.selectedData.findIndex(data => (data.label === item.label)) === -1));
       selectedData = this.state.selectedData.concat(unselectedData);
     }
@@ -126,7 +126,7 @@ export default class SelectOrderList extends React.PureComponent {
       ...item,
       key: index,
       priority: index,
-      isSelected: (item.isLocked === false && props.allSelected) ||
+      isSelected: (!item.isLocked && props.allSelected) ||
         props.selectedData.filter(data =>
           (data.label === item.label)).size !== 0,
       isLocked: item.isLocked === undefined ? false : item.isLocked,
@@ -162,7 +162,7 @@ export default class SelectOrderList extends React.PureComponent {
       );
 
     this.props.onChange({
-      [this.props.allSelectionId]: selectedData.length === this.props.availableData.size,
+      [this.props.allSelectionId]: selectedData.size === this.props.availableData.size,
       [this.props.dataSelectionId]: selectedData,
     });
   }
@@ -175,7 +175,7 @@ export default class SelectOrderList extends React.PureComponent {
     };
     const selectedData = this.state.selectedData.push(item);
     this.props.onChange({
-      [this.props.allSelectionId]: selectedData.length === this.props.availableData.size,
+      [this.props.allSelectionId]: selectedData.size === this.props.availableData.size,
       [this.props.dataSelectionId]: selectedData,
     });
   }
