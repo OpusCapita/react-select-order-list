@@ -33,7 +33,7 @@ const config = merge(getBaseConfiguration(params), {
 config.devServer = {
   noInfo: true,
   quiet: false,
-  port: 5556,
+  port: 5555,
   historyApiFallback: true,
   clientLogLevel: 'error',
   hot: true,

@@ -1,0 +1,82 @@
+@import "./../styles/_colors.scss";
+
+$oc-font-size-icon:            1.8rem !default;
+$oc-font-size-small:           1.2rem !default;
+$oc-font-size-icon:            1.8rem !default;
+
+.oc-select-order-list-keyword-group {
+  margin: 10px 0 0 0;
+  position: relative;
+
+  .oc-select-order-list-keyword-input {
+    border: 1px solid $oc-color-support-lightgray;
+  }
+}
+
+.oc-select-order-list-label {
+  margin: 10px 0 10px 0;
+}
+
+.oc-select-order-list-select-all-checkbox {
+  float: right;
+}
+
+.oc-select-order-list-available-data-list, .oc-select-order-list-selected-data-list {
+  height: 50vh;
+  overflow: auto;
+  font-size: $oc-font-size-small;
+  padding: 5px;
+  border: 2px solid $oc-color-support-lightgray;
+
+  .oc-select-order-list-available-data-item, .oc-select-order-list-selected-data-item {
+    z-index: 10000;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    height: 30px;
+
+    .oc-select-order-list-selected-data-item-icon {
+      flex: 0 0 auto;
+      overflow: hidden;
+      min-height: 0px;
+      min-width: 0px;
+      font-size: $oc-font-size-icon;
+    }
+
+    .oc-select-order-list-available-data-item-text, .oc-select-order-list-selected-data-item-text {
+      flex: 1 1 auto;
+      overflow: hidden;
+      min-height: 0px;
+      min-width: 0px;
+    }
+
+    .oc-select-order-list-dragging-icon {
+      margin-right: 10px;
+      path {
+        fill: $oc-color-azure;
+      }
+    }
+    .oc-select-order-list-locked-icon {
+      margin-right: 10px;
+      path {
+        fill: $oc-color-azure;
+      }
+    }
+
+    .oc-select-order-list-remove-icon {
+      margin-right: 17px;
+      path {
+        fill: $oc-color-azure;
+      }
+    }
+  }
+
+  .oc-select-order-list-selected-data-item {
+    cursor: pointer;
+  }
+}  
+
+.oc-select-order-list-selected-data-item.locked {
+  cursor: default;
+  background: inherit;
+}
