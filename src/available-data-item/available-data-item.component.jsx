@@ -17,7 +17,12 @@ export default class DataItem extends React.PureComponent {
   }
 
   render() {
-    const { isLocked, isSelected, label, handleItemClick } = this.props;
+    const {
+      isLocked,
+      isSelected,
+      label,
+      handleItemClick,
+    } = this.props;
     return (
       <div className="oc-select-order-list-available-data-item">
         <Checkbox
