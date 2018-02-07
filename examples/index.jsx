@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
 
-import SelectOrderListView from './components/select-order-list.component';
+import SelectOrderListView from './components/select-order-list-view.component';
 
 import './app.component.scss';
 

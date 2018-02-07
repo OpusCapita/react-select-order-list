@@ -1,3 +1,4 @@
+import { List } from 'immutable';
 import { arrayMove } from 'react-sortable-hoc';
 
 const escapeRegExp = /[-\\^$*+?.()|[\]{}]/g;
@@ -32,7 +33,8 @@ export default {
     })
   ),
 
-  changeDataSort: (data, oldIndex, newIndex) => {
+  changeDataSort: (dataList, oldIndex, newIndex) => {
+    const data = dataList.toJS();
     let changeOverLockedItems = false;
     if (oldIndex + 1 < newIndex) {
       for (let i = oldIndex; i < newIndex; i += 1) {
@@ -63,7 +65,7 @@ export default {
       // Normal sorting move all other items up/down
       sortedData = arrayMove(data, oldIndex, newIndex);
     }
-    return sortedData;
+    return List(sortedData);
   },
 
   filterData: (data, keyword) => {

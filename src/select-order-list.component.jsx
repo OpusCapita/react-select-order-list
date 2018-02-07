@@ -17,13 +17,14 @@ import 'font-awesome/scss/font-awesome.scss';
 import AvailableDataList from './available-data-list/available-data-list.component';
 import SelectedDataList from './selected-data-list/selected-data-list.component';
 import Utils from './data.utils';
-import './react-select-order-list.component.scss';
+import './select-order-list.component.scss';
 
 export default class SelectOrderList extends React.PureComponent {
   static propTypes = {
     availableData: ImmutablePropTypes.list.isRequired,
     onChange: PropTypes.func.isRequired,
     allLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+    allSelected: PropTypes.bool,
     availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     id: PropTypes.string,
     searchPlaceholder: PropTypes.string,
@@ -33,6 +34,7 @@ export default class SelectOrderList extends React.PureComponent {
 
   static defaultProps = {
     allLabel: '',
+    allSelected: false,
     availableListLabel: '',
     id: '',
     searchPlaceholder: 'Search...',
@@ -43,50 +45,33 @@ export default class SelectOrderList extends React.PureComponent {
   constructor(props) {
     super(props);
     const availableDataList = Utils.getAvailableDataList(props.availableData, props.selectedData);
-    const selectedDataList = Utils.getSelectedDataList(props.selectedData);
     this.state = {
       availableDataList,
-      selectedDataList,
+      selectedDataList: Utils.getSelectedDataList(props.selectedData),
       keyword: '',
-      selectedAll: availableDataList.size === selectedDataList.size,
       visibleAvailableDataList: availableDataList,
     };
   }
 
-  handleSelectedAllChange = () => {
-    const selectedAll = !this.state.selectedAll;
-    let { availableDataList, keyword, visibleAvailableDataList } = this.state;
-    let selectedDataList = List();
-    availableDataList = availableDataList.map((item) => {
-      const newItem = item;
-      if (!item.isLocked) {
-        newItem.isSelected = selectedAll;
-      }
-      if (selectedAll || item.isLocked) {
-        selectedDataList = selectedDataList.push(newItem);
-      }
-      return newItem;
-    });
-    if (selectedAll) {
-      keyword = '';
-      visibleAvailableDataList = availableDataList;
-    } else {
-      visibleAvailableDataList = visibleAvailableDataList.map((item) => {
-        const newItem = item;
-        if (!item.isLocked) {
-          newItem.isSelected = selectedAll;
-        }
-        return newItem;
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.availableData.equals(this.props.availableData) ||
+    !nextProps.selectedData.equals(this.props.selectedData)) {
+      const selectedDataList = Utils.getSelectedDataList(nextProps.selectedData);
+      const availableDataList =
+        Utils.getAvailableDataList(nextProps.availableData, nextProps.selectedData);
+      this.setState({
+        availableDataList,
+        selectedDataList,
+        visibleAvailableDataList: Utils.filterData(availableDataList, this.state.keyword),
       });
     }
-    this.setState({
-      availableDataList,
-      keyword,
-      selectedAll,
-      selectedDataList,
-      visibleAvailableDataList,
-    });
-    this.props.onChange(selectedDataList);
+  }
+
+  handleAllSelectedChange = () => {
+    const allSelected = !this.props.allSelected;
+    const selectedData = allSelected ? this.state.availableDataList :
+      this.state.selectedDataList.filter(data => data.isLocked === true);
+    this.props.onChange({ allSelected, selectedData });
   }
 
   handleKeywordChange = (e) => {
@@ -96,59 +81,26 @@ export default class SelectOrderList extends React.PureComponent {
   }
 
   handleSortChange = ({ oldIndex, newIndex }) => {
-    const selectedDataList =
-      List(Utils.changeDataSort(this.state.selectedDataList.toJS(), oldIndex, newIndex));
-    this.setState({ selectedDataList });
-    this.props.onChange(selectedDataList);
+    if (newIndex === null || newIndex === oldIndex) {
+      return;
+    }
+    const selectedData = Utils.changeDataSort(this.state.selectedDataList, oldIndex, newIndex);
+    this.props.onChange({ selectedData, allSelected: this.props.allSelected });
   }
 
-  handleSelectItem = (selectedItem) => {
+  handleSelectItem = (item) => {
     // add selected item to the end of the list
-    const selectedDataList = this.state.selectedDataList.push(selectedItem);
-    let { availableDataList, visibleAvailableDataList } = this.state;
-    availableDataList = availableDataList.map((item) => {
-      const newItem = item;
-      if (item.value === selectedItem.value) {
-        newItem.isSelected = true;
-      }
-      return newItem;
+    this.props.onChange({
+      allSelected: this.state.selectedDataList.size + 1 === this.props.availableData.size,
+      selectedData: this.state.selectedDataList.push(item),
     });
-    visibleAvailableDataList = visibleAvailableDataList.map((item) => {
-      const newItem = item;
-      if (item.value === selectedItem.value) {
-        newItem.isSelected = true;
-      }
-      return newItem;
-    });
-    this.setState({ availableDataList, visibleAvailableDataList, selectedDataList });
-    this.props.onChange(selectedDataList);
   }
 
-  handleUnselectItem = (unselectedItem) => {
-    const selectedDataList =
-      this.state.selectedDataList.filter(i => i.value !== unselectedItem.value);
-    let { availableDataList, visibleAvailableDataList } = this.state;
-    availableDataList = availableDataList.map((item) => {
-      const newItem = item;
-      if (item.value === unselectedItem.value) {
-        newItem.isSelected = false;
-      }
-      return newItem;
+  handleUnselectItem = (item) => {
+    this.props.onChange({
+      allSelected: false,
+      selectedData: this.state.selectedDataList.filter(i => i.value !== item.value),
     });
-    visibleAvailableDataList = visibleAvailableDataList.map((item) => {
-      const newItem = item;
-      if (item.value === unselectedItem.value) {
-        newItem.isSelected = false;
-      }
-      return newItem;
-    });
-    this.setState({
-      availableDataList,
-      visibleAvailableDataList,
-      selectedDataList,
-      selectedAll: false,
-    });
-    this.props.onChange(selectedDataList);
   }
 
   render() {
@@ -171,15 +123,17 @@ export default class SelectOrderList extends React.PureComponent {
         <Row>
           <Col xs={4}>
             <FormGroup className="oc-select-order-list-label">
-              <ControlLabel>{this.props.availableListLabel}</ControlLabel>
+              <ControlLabel>
+                {this.props.availableListLabel}
+              </ControlLabel>
             </FormGroup>
           </Col>
           <Col xs={2}>
             <FormGroup>
               <Checkbox
                 className="oc-select-order-list-select-all-checkbox"
-                checked={this.state.selectedAll}
-                onChange={this.handleSelectedAllChange}
+                checked={this.props.allSelected}
+                onChange={this.handleAllSelectedChange}
               >
                 {this.props.allLabel}
               </Checkbox>
@@ -187,7 +141,9 @@ export default class SelectOrderList extends React.PureComponent {
           </Col>
           <Col xs={6}>
             <FormGroup className="oc-select-order-list-label">
-              <ControlLabel>{this.props.selectedListLabel}</ControlLabel>
+              <ControlLabel>
+                {this.props.selectedListLabel}
+              </ControlLabel>
             </FormGroup>
           </Col>
         </Row>
