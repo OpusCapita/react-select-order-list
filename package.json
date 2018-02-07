@@ -101,7 +101,6 @@
     "write-file-webpack-plugin": "^4.2.0"
   },
   "dependencies": {
-    "@opuscapita/react-floating-select": "1.1.0",
     "@opuscapita/react-icons": "1.2.0",
     "@opuscapita/react-perfect-scrollbar": "0.0.5",
     "@opuscapita/react-searchbar": "0.0.10"
