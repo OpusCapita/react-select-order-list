@@ -2,6 +2,16 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
+## next
+* Code reconfigue to merge with column settings of `react-grid` component
+* Remove props `allSelectionId` and `dataSelectionId` and update `onChange` callback returned object
+* Fix a bug with drag and drop after unselecting all and selecting items
+* Update class names and style
+* Update dependencies
+* Update hot run port to 5555
+* Update project structure
+* Update unit tests
+
 ## 1.3.1
 * Fixed lock items after "All" click
 * Changed checkbox styl on avaiable list
