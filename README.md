@@ -26,7 +26,7 @@ npm install @opuscapita/react-select-order-list
   Or
 
 * Run `npm run hot`
-* Open `http://localhost:5556/`
+* Open `http://localhost:5555/`
 
 #### Contributing
 * Make a new branch for the changes

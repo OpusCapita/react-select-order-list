@@ -5,38 +5,39 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 import { List } from 'immutable';
 
-import SelectOrderList from '../../src/list-control/index';
+import SelectOrderList from '../../src/index';
 
-describe('ListItems component', function describe() {
+describe('Select and order list component', function describe() {
   it('should render and function correctly', function it() {
     const props = {
       onChange: () => {},
-      dataSelectionId: 'allSelected',
-      allSelectionId: 'selectedData',
-      availableListLabel: '',
-      selectedListLabel: '',
       availableData: List([
         {
           label: 'one',
+          value: 1,
         },
         {
           label: 'two',
+          value: 2,
         },
         {
           label: 'three',
+          value: 3,
         },
       ]),
       selectedData: List([
         {
           label: 'two',
+          value: 2,
         },
         {
           label: 'three',
+          value: 3,
         },
       ]),
     };
     const wrapper = mount(<SelectOrderList {...props} />);
-    expect(wrapper.find('.oc-data-keyword-input').exists()).to.equal(true);
+    expect(wrapper.find('.oc-select-order-list-keyword-input').exists()).to.equal(true);
     let spy;
     spy = sinon.spy(wrapper.instance(), 'handleKeywordChange');
     wrapper.instance().handleKeywordChange('test');
@@ -45,10 +46,10 @@ describe('ListItems component', function describe() {
     wrapper.instance().handleSortChange(1, 2);
     expect(spy.called).to.be.true;
     spy = sinon.spy(wrapper.instance(), 'handleSelectItem');
-    wrapper.instance().handleSelectItem({ key: 1 });
+    wrapper.instance().handleSelectItem({ value: 1 });
     expect(spy.called).to.be.true;
-    spy = sinon.spy(wrapper.instance(), 'handleDeselectItem');
-    wrapper.instance().handleDeselectItem({ key: 1, priority: 1 });
+    spy = sinon.spy(wrapper.instance(), 'handleUnselectItem');
+    wrapper.instance().handleUnselectItem({ value: 1 });
     expect(spy.called).to.be.true;
     wrapper.unmount();
   });

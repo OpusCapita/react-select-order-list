@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ScrollBar from '@opuscapita/react-perfect-scrollbar';
-import DataItem from './available-item.component';
 
-export default class AvailableColumnsList extends React.Component {
+import DataItem from './../available-data-item/available-data-item.component';
+
+export default class AvailableDataList extends React.Component {
   static propTypes = {
-    items: ImmutablePropTypes.list.isRequired, // eslint-disable-line react/forbid-prop-types
+    items: ImmutablePropTypes.list.isRequired,
     onSelectItem: PropTypes.func.isRequired,
-    onDeselectItem: PropTypes.func.isRequired,
+    onUnselectItem: PropTypes.func.isRequired,
   };
 
   handleItemClick = item => () => {
     if (item.isSelected) {
-      this.props.onDeselectItem(item);
+      this.props.onUnselectItem(item);
     } else {
       this.props.onSelectItem(item);
     }
@@ -21,11 +22,11 @@ export default class AvailableColumnsList extends React.Component {
 
   render() {
     return (
-      <div className="oc-available-data-list">
+      <div className="oc-select-order-list-available-data-list">
         <ScrollBar>
           {this.props.items.map(item => (
             <DataItem
-              key={item.key}
+              key={item.value}
               isSelected={item.isSelected}
               isLocked={item.isLocked}
               label={item.label}

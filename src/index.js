@@ -1,3 +1,3 @@
-import SelectOrderList from './list-control/index';
+import SelectOrderList from './select-order-list.component';
 
 export default SelectOrderList;

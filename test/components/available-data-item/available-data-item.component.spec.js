@@ -2,18 +2,17 @@
 import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
-import DataItem from '../../../src/list-control/available-list/available-item.component';
+import DataItem from '../../../src/available-data-item/available-data-item.component';
 
-describe('available item component', function describe() {
-  it('should render and function correctly', function it() {
+describe('Available data item component', function describe() {
+  it('should render correctly', function it() {
     const props = {
-      key: 1,
       isSelected: true,
-      label: '',
+      label: 'Item 1',
       handleItemClick: () => {},
     };
     const wrapper = mount(<DataItem {...props} />);
-    expect(wrapper.find('.oc-available-data-item').exists()).to.equal(true);
+    expect(wrapper.find('.oc-select-order-list-available-data-item').exists()).to.be.true;
     wrapper.unmount();
   });
 });
