@@ -7,6 +7,7 @@
 ```
 npm install @opuscapita/react-select-order-list
 ```
+* Install and load font-awesome font to your project
 
 ### Demo
 View the [DEMO](https://opuscapita.github.io/react-select-order-list)
