@@ -5,7 +5,8 @@ import { Icon } from '@opuscapita/react-icons';
 import ScrollBar from '@opuscapita/react-perfect-scrollbar';
 import {
   SortableContainer,
-  SortableElement } from 'react-sortable-hoc';
+  SortableElement,
+} from 'react-sortable-hoc';
 
 const SortableItem = SortableElement(({ value, handleItemRemove }) => (
   <div

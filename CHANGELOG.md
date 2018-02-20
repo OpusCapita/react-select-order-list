@@ -4,6 +4,9 @@
 
 ## next
 
+## 3.0.0
+* Use new component template with UMD/CommonJS/ES Module builds
+
 ## 2.0.0
 * Code reconfigue to merge with column settings of `react-grid` component
 * Remove props `allSelectionId` and `dataSelectionId` and update `onChange` callback returned object

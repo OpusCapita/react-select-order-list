@@ -12,7 +12,6 @@ import {
   Row,
 } from 'react-bootstrap';
 import { SearchBar } from '@opuscapita/react-searchbar';
-import 'font-awesome/scss/font-awesome.scss';
 
 import AvailableDataList from './available-data-list/available-data-list.component';
 import SelectedDataList from './selected-data-list/selected-data-list.component';
