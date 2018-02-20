@@ -2,9 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
-import 'font-awesome-sass-loader';
 import ComponentView from './components/component-view';
-
 import './app.component.scss';
 import './favicon.ico';
 

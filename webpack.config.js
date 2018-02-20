@@ -73,12 +73,12 @@ const baseConfig = {
       },
       {
         test: /\.svg$/,
-        exclude: path.resolve(__dirname, '..', 'node_modules', 'font-awesome'),
+        exclude: path.resolve(__dirname, 'node_modules', 'font-awesome'),
         use: ['babel-loader', 'react-svg-loader'],
       },
       {
         test: /\.svg$/,
-        include: path.resolve(__dirname, '..', 'node_modules', 'font-awesome'),
+        include: path.resolve(__dirname, 'node_modules', 'font-awesome'),
         use: ['file-loader?name=[name].[ext]'],
       },
       {
