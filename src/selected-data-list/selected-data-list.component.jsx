@@ -6,11 +6,11 @@ import { Icon } from '@opuscapita/react-icons';
 import ScrollBar from '@opuscapita/react-perfect-scrollbar';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({ value, handleItemRemove, mouseDown }) => (
+const SortableItem = SortableElement(({ value, handleItemRemove, handleMouseDown }) => (
   <div
     key={value.value}
     className={`oc-select-order-list-selected-data-item${value.isLocked ? ' locked' : ''}`}
-    onMouseDown={mouseDown}
+    onMouseDown={handleMouseDown}
   >
     <span className="oc-select-order-list-selected-data-item-text">
       {value.label}
@@ -47,7 +47,7 @@ const SortableItem = SortableElement(({ value, handleItemRemove, mouseDown }) =>
   </div>
 ));
 
-const SortableList = SortableContainer(({ items, handleItemRemove, mouseDown }) => (
+const SortableList = SortableContainer(({ items, handleItemRemove, handleMouseDown }) => (
   <div className="oc-select-order-list-selected-data-list">
     <ScrollBar>
       {items.map((value, index) => (
@@ -57,7 +57,7 @@ const SortableList = SortableContainer(({ items, handleItemRemove, mouseDown }) 
           value={value}
           disabled={value.isLocked}
           handleItemRemove={handleItemRemove(value)}
-          mouseDown={mouseDown}
+          handleMouseDown={handleMouseDown}
         />
       ))}
     </ScrollBar>
@@ -75,15 +75,10 @@ export default class SelectedDataList extends React.PureComponent {
     this.props.onRemoveItem(item);
   }
 
-  mouseDown = (e) => {
+  handleMouseDown = (e) => {
     e.preventDefault();
   }
 
-  handelMouseDown = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
-  }
   shouldCancelStart = (e) => {
     if (e.target.id === 'oc-icon-remove' || (e.target.className.baseVal && e.target.className.baseVal.indexOf('oc-icon-remove') !== -1)) {
       return true;
@@ -94,7 +89,7 @@ export default class SelectedDataList extends React.PureComponent {
     return (
       <SortableList
         handleItemRemove={this.handleItemRemove}
-        mouseDown={this.mouseDown}
+        handleMouseDown={this.handleMouseDown}
         items={this.props.items}
         onSortEnd={this.props.onSortChange}
         shouldCancelStart={this.shouldCancelStart}
