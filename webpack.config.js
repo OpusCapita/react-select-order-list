@@ -84,19 +84,19 @@ const baseConfig = {
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-          'url-loader?limit=100&mimetype=application/font-woff&name=fonts/[name].[ext]',
+          'url-loader?limit=100&mimetype=application/font-woff&name=[name].[ext]',
         ],
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-          'url-loader?limit=100&mimetype=application/octet-stream&name=fonts/[name].[ext]',
+          'url-loader?limit=100&mimetype=application/octet-stream&name=[name].[ext]',
         ],
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-          'file-loader?name=fonts/[name].[ext]',
+          'file-loader?name=[name].[ext]',
         ],
       },
       {

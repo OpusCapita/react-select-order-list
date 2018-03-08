@@ -24,6 +24,7 @@ const PATHS = {
 const baseConfig = {
   context: PATHS.context,
   entry: [
+    'babel-polyfill',
     PATHS.entry,
   ],
   output: {
@@ -80,24 +81,24 @@ const baseConfig = {
       {
         test: /\.svg$/,
         include: path.resolve(__dirname, 'node_modules', 'font-awesome'),
-        use: ['file-loader?name=fonts/[name].[ext]'],
+        use: ['file-loader?name=[name].[ext]'],
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-          'url-loader?limit=100&mimetype=application/font-woff&name=fonts/[name].[ext]',
+          'url-loader?limit=100&mimetype=application/font-woff&name=[name].[ext]',
         ],
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-          'url-loader?limit=100&mimetype=application/octet-stream&name=fonts/[name].[ext]',
+          'url-loader?limit=100&mimetype=application/octet-stream&name=[name].[ext]',
         ],
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-          'file-loader?name=fonts/[name].[ext]',
+          'file-loader?name=[name].[ext]',
         ],
       },
       {
