@@ -32,11 +32,11 @@
     "npm": ">=5.4.0"
   },
   "peerDependencies": {
-    "font-awesome": "4.7.0",
-    "prop-types": "15.6.0",
+    "font-awesome": "4.x.x",
+    "prop-types": "15.x.x",
     "react": "15 || 16",
     "react-dom": "15 || 16",
-    "react-immutable-proptypes": "2.1.0"
+    "react-immutable-proptypes": "2.x.x"
   },
   "devDependencies": {
     "autoprefixer": "8.1.0",
@@ -104,7 +104,6 @@
   },
   "dependencies": {
     "@opuscapita/react-icons": "2.0.2",
-    "@opuscapita/react-icons": "2.0.1",
     "@opuscapita/react-perfect-scrollbar": "3.0.0",
     "@opuscapita/react-searchbar": "0.0.10",
     "classnames": "2.2.5",
