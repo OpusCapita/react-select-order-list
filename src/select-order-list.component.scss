@@ -4,7 +4,7 @@ $oc-font-size-icon:            1.8rem !default;
 
 $oc-color-support-lightgray:   #D3DADE !default;
 $oc-color-azure:               #67707C !default;
-
+$oc-color-selected-item:            #E6E9EB !default;
 .oc-select-order-list-keyword-group {
   margin: 10px 0 0 0;
   position: relative;
@@ -28,6 +28,9 @@ $oc-color-azure:               #67707C !default;
   font-size: $oc-font-size-small;
   padding: 5px;
   border: 2px solid $oc-color-support-lightgray;
+  .oc-select-order-list-available-data-item, .oc-select-order-list-selected-data-item {
+    background-color: initial;
+  }
 }  
 
 
@@ -38,6 +41,7 @@ $oc-color-azure:               #67707C !default;
   align-items: center;
   height: 30px;
   font-size: $oc-font-size-small;
+  background-color: $oc-color-selected-item;
 
   .oc-select-order-list-selected-data-item-icon {
     flex: 0 0 auto;
