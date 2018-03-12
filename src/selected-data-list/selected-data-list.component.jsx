@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -8,10 +9,11 @@ import {
   SortableElement,
 } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({ value, handleItemRemove }) => (
+const SortableItem = SortableElement(({ value, handleItemRemove, handleMouseDown }) => (
   <div
     key={value.value}
     className={`oc-select-order-list-selected-data-item${value.isLocked ? ' locked' : ''}`}
+    onMouseDown={handleMouseDown}
   >
     <span className="oc-select-order-list-selected-data-item-text">
       {value.label}
@@ -36,18 +38,19 @@ const SortableItem = SortableElement(({ value, handleItemRemove }) => (
     }
     {!value.isLocked &&
       <Icon
+        id="oc-icon-remove"
         type="indicator"
         name="remove"
         className="oc-select-order-list-remove-icon"
-        width={16}
-        height={16}
+        width={20}
+        height={20}
         onClick={handleItemRemove}
       />
     }
   </div>
 ));
 
-const SortableList = SortableContainer(({ items, handleItemRemove }) => (
+const SortableList = SortableContainer(({ items, handleItemRemove, handleMouseDown }) => (
   <div className="oc-select-order-list-selected-data-list">
     <ScrollBar>
       {items.map((value, index) => (
@@ -57,6 +60,7 @@ const SortableList = SortableContainer(({ items, handleItemRemove }) => (
           value={value}
           disabled={value.isLocked}
           handleItemRemove={handleItemRemove(value)}
+          handleMouseDown={handleMouseDown}
         />
       ))}
     </ScrollBar>
@@ -74,17 +78,21 @@ export default class SelectedDataList extends React.PureComponent {
     this.props.onRemoveItem(item);
   }
 
+  handleMouseDown = (e) => {
+    e.preventDefault();
+  }
+
   shouldCancelStart = (e) => {
-    if (e.target.className.baseVal && e.target.className.baseVal.indexOf('oc-icon-remove') !== -1) {
+    if (e.target.id === 'oc-icon-remove' || (e.target.className.baseVal && e.target.className.baseVal.indexOf('oc-icon-remove') !== -1)) {
       return true;
     }
     return false;
   }
-
   render() {
     return (
       <SortableList
         handleItemRemove={this.handleItemRemove}
+        handleMouseDown={this.handleMouseDown}
         items={this.props.items}
         onSortEnd={this.props.onSortChange}
         shouldCancelStart={this.shouldCancelStart}

@@ -3,6 +3,9 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## next
+* Style improvement after selection items click
+* Increased area of click on remove button
+* Disabled items text selection on drag&drop event
 
 ## 3.0.0
 * Use new component template with UMD/CommonJS/ES Module builds
