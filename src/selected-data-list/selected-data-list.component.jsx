@@ -42,8 +42,8 @@ const SortableItem = SortableElement(({ value, handleItemRemove, handleMouseDown
         type="indicator"
         name="remove"
         className="oc-select-order-list-remove-icon"
-        width={16}
-        height={16}
+        width={20}
+        height={20}
         onClick={handleItemRemove}
       />
     }
