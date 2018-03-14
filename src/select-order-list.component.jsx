@@ -119,7 +119,7 @@ export default class SelectOrderList extends React.PureComponent {
             </FormGroup>
           </Col>
         </Row>
-        <Row>
+        <Row className="oc-select-order-list-title-bar">
           <Col xs={4}>
             <FormGroup className="oc-select-order-list-label">
               <ControlLabel>

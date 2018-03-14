@@ -4,18 +4,30 @@ $oc-font-size-icon:            1.8rem !default;
 
 $oc-color-support-lightgray:   #D3DADE !default;
 $oc-color-azure:               #67707C !default;
-$oc-color-selected-item:            #E6E9EB !default;
+$oc-color-selected-item:       #E6E9EB !default;
+
 .oc-select-order-list-keyword-group {
   margin: 10px 0 0 0;
   position: relative;
 }
 
 .oc-select-order-list-label {
-  margin: 10px 0 10px 0;
+  margin: 10px 0 0 0;
+
 }
 
 .oc-select-order-list-select-all-checkbox {
   float: right;
+}
+
+.oc-select-order-list-title-bar {
+  .form-group {
+    margin-bottom: 0px !important;
+  }
+
+  .checkbox {
+    margin-bottom: 0px!important;
+  }
 }
 
 .oc-select-order-list-available-data-list, .oc-select-order-list-selected-data-list {
@@ -26,6 +38,10 @@ $oc-color-selected-item:            #E6E9EB !default;
   border: 2px solid $oc-color-support-lightgray;
   .oc-select-order-list-available-data-item, .oc-select-order-list-selected-data-item {
     background-color: initial;
+  }
+
+  .checkbox {
+    font-size: 14px;
   }
 }  
 
