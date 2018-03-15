@@ -33,15 +33,10 @@ $oc-color-selected-item:       #E6E9EB !default;
 .oc-select-order-list-available-data-list, .oc-select-order-list-selected-data-list {
   height: 50vh;
   overflow: auto;
-  font-size: $oc-font-size-small;
   padding: 5px;
   border: 2px solid $oc-color-support-lightgray;
   .oc-select-order-list-available-data-item, .oc-select-order-list-selected-data-item {
     background-color: initial;
-  }
-
-  .checkbox {
-    font-size: 14px;
   }
 }  
 
@@ -52,7 +47,6 @@ $oc-color-selected-item:       #E6E9EB !default;
   display: flex;
   align-items: center;
   height: 30px;
-  font-size: $oc-font-size-small;
   background-color: $oc-color-selected-item;
 
   .oc-select-order-list-selected-data-item-icon {
@@ -68,6 +62,7 @@ $oc-color-selected-item:       #E6E9EB !default;
     overflow: hidden;
     min-height: 0px;
     min-width: 0px;
+    font-size: $oc-font-size-small;
   }
 
   .oc-select-order-list-dragging-icon {
