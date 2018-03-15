@@ -33,6 +33,7 @@ Also you need to configure sass loader, since all the styles are in sass format.
 | availableListLabel       | string or element         | ''       | Label for available items list        |
 | id                       | string                    | ''       | Id for a component div wrapper        |
 | searchPlaceholder        | string                    | ''       | Placeholder for search                |
+| searchTooltip            | string or element         | ''       | Tooltip for search bar                |
 | selectedData             | Immutable List of `item`s | List     | List of selected and sorted items     |
 | selectedListLabel        | string or element         | ''       | Label for selected items list         |
 
