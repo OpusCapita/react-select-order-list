@@ -27,6 +27,7 @@ export default class SelectOrderList extends React.PureComponent {
     availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     id: PropTypes.string,
     searchPlaceholder: PropTypes.string,
+    searchTooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     selectedData: ImmutablePropTypes.list,
     selectedListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   };
@@ -37,6 +38,7 @@ export default class SelectOrderList extends React.PureComponent {
     availableListLabel: '',
     id: '',
     searchPlaceholder: 'Search...',
+    searchTooltip: null,
     selectedData: List(),
     selectedListLabel: '',
   }
@@ -114,6 +116,7 @@ export default class SelectOrderList extends React.PureComponent {
                 inputClassName="oc-select-order-list-keyword-input"
                 onSearch={this.handleKeywordChange}
                 searchPlaceHolder={this.props.searchPlaceholder}
+                tooltip={this.props.searchTooltip}
                 value={this.state.keyword}
               />
             </FormGroup>

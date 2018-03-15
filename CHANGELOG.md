@@ -4,6 +4,9 @@
 
 ## next
 
+## 3.0.2
+* Tooltip for search bar
+
 ## 3.0.1
 * Style improvement after selection items click
 * Increased area of click on remove button
