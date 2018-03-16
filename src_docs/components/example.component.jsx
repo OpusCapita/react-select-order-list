@@ -51,7 +51,7 @@ export default class SelectOrderListView extends React.Component {
             allLabel: 'All',
             availableListLabel: 'Available data',
             selectedListLabel: 'Selected data',
-            searchTooltip: 'Test'
+            searchTooltip: 'Test',
           }}
         />
       </div>
