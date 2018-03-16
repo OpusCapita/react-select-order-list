@@ -22,25 +22,29 @@ export default class SelectOrderList extends React.PureComponent {
   static propTypes = {
     availableData: ImmutablePropTypes.list.isRequired,
     onChange: PropTypes.func.isRequired,
-    allLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     allSelected: PropTypes.bool,
-    availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     id: PropTypes.string,
     searchPlaceholder: PropTypes.string,
-    searchTooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     selectedData: ImmutablePropTypes.list,
-    selectedListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+    translations: PropTypes.shape({
+      allLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+      availableListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+      searchTooltip: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+      selectedListLabel: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+    }),
   };
 
   static defaultProps = {
-    allLabel: '',
     allSelected: false,
-    availableListLabel: '',
     id: '',
     searchPlaceholder: 'Search...',
-    searchTooltip: null,
     selectedData: List(),
-    selectedListLabel: '',
+    translations: {
+      allLabel: '',
+      availableListLabel: '',
+      searchTooltip: null,
+      selectedListLabel: '',
+    },
   }
 
   constructor(props) {
@@ -116,7 +120,7 @@ export default class SelectOrderList extends React.PureComponent {
                 inputClassName="oc-select-order-list-keyword-input"
                 onSearch={this.handleKeywordChange}
                 searchPlaceHolder={this.props.searchPlaceholder}
-                tooltip={this.props.searchTooltip}
+                tooltip={this.props.translations.searchTooltip}
                 value={this.state.keyword}
               />
             </FormGroup>
@@ -126,7 +130,7 @@ export default class SelectOrderList extends React.PureComponent {
           <Col xs={4}>
             <FormGroup className="oc-select-order-list-label">
               <ControlLabel>
-                {this.props.availableListLabel}
+                {this.props.translations.availableListLabel}
               </ControlLabel>
             </FormGroup>
           </Col>
@@ -137,14 +141,14 @@ export default class SelectOrderList extends React.PureComponent {
                 checked={this.props.allSelected}
                 onChange={this.handleAllSelectedChange}
               >
-                {this.props.allLabel}
+                {this.props.translations.allLabel}
               </Checkbox>
             </FormGroup>
           </Col>
           <Col xs={6}>
             <FormGroup className="oc-select-order-list-label">
               <ControlLabel>
-                {this.props.selectedListLabel}
+                {this.props.translations.selectedListLabel}
               </ControlLabel>
             </FormGroup>
           </Col>

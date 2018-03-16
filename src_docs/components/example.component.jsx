@@ -42,14 +42,17 @@ export default class SelectOrderListView extends React.Component {
     return (
       <div className="oc-select-order-list">
         <SelectOrderList
-          allLabel="All"
           allSelected={this.state.allSelected}
           availableData={this.state.availableData}
-          availableListLabel="Available data"
           id="example"
           onChange={this.onChange}
           selectedData={this.state.selectedData}
-          selectedListLabel="Selected data"
+          translations={{
+            allLabel: 'All',
+            availableListLabel: 'Available data',
+            selectedListLabel: 'Selected data',
+            searchTooltip: 'Test'
+          }}
         />
       </div>
     );
