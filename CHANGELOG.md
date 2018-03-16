@@ -4,10 +4,13 @@
 
 ## next
 
-## 3.0.2
+## 3.0.0
+* Bunched translations prop for labels
+
+## 2.0.2
 * Tooltip for search bar
 
-## 3.0.1
+## 2.0.1
 * Style improvement after selection items click
 * Increased area of click on remove button
 * Disabled items text selection on drag&drop event
