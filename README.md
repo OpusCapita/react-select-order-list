@@ -28,13 +28,11 @@ Also you need to configure sass loader, since all the styles are in sass format.
 | ------------------------ | --------------------------| ---------| --------------------------------------|
 | availableData            | Immutable List of `item`s | required | List of the selectable items          |
 | onChange                 | function                  | required | Callback function, which is called when data selection or order is changed. It returns an object of allSelected (boolean) sign and selectedData (List) |
-| allLabel                 | string or element         | ''       | Label for All checkbox                |
 | allSelected              | boolean                   | false    | Sign of all available items selected  |
-| availableListLabel       | string or element         | ''       | Label for available items list        |
 | id                       | string                    | ''       | Id for a component div wrapper        |
 | searchPlaceholder        | string                    | ''       | Placeholder for search                |
 | selectedData             | Immutable List of `item`s | List     | List of selected and sorted items     |
-| selectedListLabel        | string or element         | ''       | Label for selected items list         |
+| translations             | object                    | { allLabel: '', availableListLabel: '', searchTooltip: '', selectedListLabel: '' } | Localized labels         |
 
 #### SelectOrderList - `item`s
 
