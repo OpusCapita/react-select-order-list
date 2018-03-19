@@ -1,27 +1,34 @@
 @import "~@opuscapita/oc-cm-common-styles/styles/colors";
 @import "~@opuscapita/oc-cm-common-styles/styles/variables";
 
+
 .oc-select-order-list-keyword-group {
   margin: 10px 0 0 0;
   position: relative;
-
-  .oc-select-order-list-keyword-input {
-    border: 1px solid $oc-color-support-lightgray;
-  }
 }
 
 .oc-select-order-list-label {
-  margin: 10px 0 10px 0;
+  margin: 10px 0 0 0;
+
 }
 
 .oc-select-order-list-select-all-checkbox {
   float: right;
 }
 
+.oc-select-order-list-title-bar {
+  .form-group {
+    margin-bottom: 0px !important;
+  }
+
+  .checkbox {
+    margin-bottom: 0px!important;
+  }
+}
+
 .oc-select-order-list-available-data-list, .oc-select-order-list-selected-data-list {
   height: 50vh;
   overflow: auto;
-  font-size: $oc-font-size-small;
   padding: 5px;
   border: 2px solid $oc-color-support-lightgray;
   .oc-select-order-list-available-data-item, .oc-select-order-list-selected-data-item {
@@ -36,7 +43,6 @@
   display: flex;
   align-items: center;
   height: 30px;
-  font-size: $oc-font-size-small;
   background-color: $oc-color-select-selected;
 
   .oc-select-order-list-selected-data-item-icon {
@@ -52,6 +58,7 @@
     overflow: hidden;
     min-height: 0px;
     min-width: 0px;
+    font-size: $oc-font-size-small;
   }
 
   .oc-select-order-list-dragging-icon {

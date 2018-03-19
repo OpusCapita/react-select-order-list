@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## next
+* Checkboxes style improvement
+* Removed extra border in searchbox
 
 ## 3.0.0
 * Bunched translations prop for labels
