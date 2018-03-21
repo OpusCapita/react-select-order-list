@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
-  Checkbox,
   Col,
   ControlLabel,
   FormGroup,
   Grid,
   Row,
 } from 'react-bootstrap';
+import Checkbox from '@opuscapita/react-checkbox';
 import { SearchBar } from '@opuscapita/react-searchbar';
 
 import AvailableDataList from './available-data-list/available-data-list.component';
@@ -140,9 +140,8 @@ export default class SelectOrderList extends React.PureComponent {
                 className="oc-select-order-list-select-all-checkbox"
                 checked={this.props.allSelected}
                 onChange={this.handleAllSelectedChange}
-              >
-                {this.props.translations.allLabel}
-              </Checkbox>
+                label={this.props.translations.allLabel}
+              />
             </FormGroup>
           </Col>
           <Col xs={6}>
