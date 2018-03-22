@@ -4,6 +4,9 @@
 
 ## next
 
+## 3.0.1
+* @opuscapita/react-checkbox taken into use
+
 ## 3.0.0
 * Bunched translations prop for labels
 

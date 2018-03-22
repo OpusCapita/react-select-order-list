@@ -103,10 +103,11 @@
     "write-file-webpack-plugin": "4.2.0"
   },
   "dependencies": {
-    "@opuscapita/oc-cm-common-styles": "2.0.2",
+    "@opuscapita/oc-cm-common-styles": "2.0.4",
+    "@opuscapita/react-checkbox": "1.0.0",
     "@opuscapita/react-icons": "2.0.2",
     "@opuscapita/react-perfect-scrollbar": "3.0.0",
-    "@opuscapita/react-searchbar": "0.0.10",
+    "@opuscapita/react-searchbar": "1.0.1",
     "classnames": "2.2.5",
     "react-sortable-hoc": "0.6.8"
   },

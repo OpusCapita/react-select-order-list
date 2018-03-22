@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox } from 'react-bootstrap';
+import Checkbox from '@opuscapita/react-checkbox';
 
 export default class DataItem extends React.PureComponent {
   static propTypes = {
