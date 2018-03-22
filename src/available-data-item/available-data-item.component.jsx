@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Checkbox from '@opuscapita/react-checkbox';
 
 export default class DataItem extends React.PureComponent {
+
+
   static propTypes = {
     handleItemClick: PropTypes.func.isRequired,
     isLocked: PropTypes.bool,
@@ -16,6 +18,18 @@ export default class DataItem extends React.PureComponent {
     label: '',
   }
 
+  handleKeyPress = (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      this.props.handleItemClick(true);
+    }
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      this.props.handleItemClick(false);
+    }
+  }
+
+
   render() {
     const {
       isLocked,
@@ -26,9 +40,11 @@ export default class DataItem extends React.PureComponent {
     return (
       <div className="oc-select-order-list-available-data-item">
         <Checkbox
+          inputRef={(ref) => { this.input = ref; }}
           checked={isSelected}
           disabled={isLocked}
           onChange={handleItemClick}
+          onKeyDown={this.handleKeyPress}
         />
         <span className="oc-select-order-list-available-data-item-text">
           {label}
