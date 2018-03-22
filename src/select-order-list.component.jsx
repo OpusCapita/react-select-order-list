@@ -11,7 +11,7 @@ import {
   Row,
 } from 'react-bootstrap';
 import Checkbox from '@opuscapita/react-checkbox';
-import { SearchBar } from '@opuscapita/react-searchbar';
+import SearchBar from '@opuscapita/react-searchbar';
 
 import AvailableDataList from './available-data-list/available-data-list.component';
 import SelectedDataList from './selected-data-list/selected-data-list.component';
