@@ -6,6 +6,7 @@
 
 ## 3.0.1
 * @opuscapita/react-checkbox taken into use
+* @opuscapita/react-searchbar version updated
 
 ## 3.0.0
 * Bunched translations prop for labels
