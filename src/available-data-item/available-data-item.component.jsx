@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Checkbox from '@opuscapita/react-checkbox';
 
 export default class DataItem extends React.PureComponent {
-
-
   static propTypes = {
     handleItemClick: PropTypes.func.isRequired,
     isLocked: PropTypes.bool,
