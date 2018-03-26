@@ -1,4 +1,3 @@
-/* eslint-disable react/no-string-refs */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -40,14 +39,13 @@ export default class AvailableDataList extends React.Component {
 
   handleItemClick = item => (e) => {
     if (typeof e === 'boolean') {
-      const element = this.refs[this.getRefName(e, item.sort)].input;
+      const element = this[this.getRefName(e, item.sort)].input;
       this.setState({
         focusedElement: element,
         scrollUp: !e,
       });
       element.focus();
-    } else
-    if (item.isSelected) {
+    } else if (item.isSelected) {
       this.props.onUnselectItem(item);
     } else {
       this.props.onSelectItem(item);
@@ -55,7 +53,7 @@ export default class AvailableDataList extends React.Component {
   }
 
   handleScroll = () => {
-    if (this.state.focusedElement !== undefined) {
+    if (this.state.focusedElement) {
       this.state.focusedElement.scrollIntoView(this.state.scrollUp);
       this.setState({
         focusedElement: undefined,
@@ -66,7 +64,7 @@ export default class AvailableDataList extends React.Component {
   render() {
     return (
       <div className="oc-select-order-list-available-data-list">
-        <ScrollBar onScrollY={this.handleScroll}>
+        <ScrollBar onScrollY={this.handleScroll} >
           {this.props.items.map(item => (
             <DataItem
               key={item.value}
@@ -74,7 +72,7 @@ export default class AvailableDataList extends React.Component {
               isLocked={item.isLocked}
               label={item.label}
               handleItemClick={this.handleItemClick(item)}
-              ref={item.label}
+              ref={(c) => { this[item.label] = c; }}
             />
           ))}
         </ScrollBar>

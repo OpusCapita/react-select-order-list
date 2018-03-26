@@ -20,10 +20,12 @@ export default class DataItem extends React.PureComponent {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       this.props.handleItemClick(true);
-    }
-    if (e.key === 'ArrowUp') {
+    } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       this.props.handleItemClick(false);
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      this.props.handleItemClick(true);
     }
   }
 
