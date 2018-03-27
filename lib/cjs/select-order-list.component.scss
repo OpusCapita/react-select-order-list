@@ -25,6 +25,11 @@
   .oc-select-order-list-available-data-item, .oc-select-order-list-selected-data-item {
     background-color: initial;
   }
+  
+  //IE problem with navigation to last element on list by arrows key
+  .ps__thumb-x {
+    visibility: hidden !important;
+  }
 }  
 
 
@@ -71,6 +76,7 @@
       fill: $oc-color-azure;
     }
   }
+
 }
 
 .oc-select-order-list-selected-data-item {
