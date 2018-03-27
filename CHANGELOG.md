@@ -4,6 +4,9 @@
 
 ## next
 
+## 3.1.0
+* Added arrow keys to moving between elements
+
 ## 3.0.1
 * @opuscapita/react-checkbox taken into use
 * @opuscapita/react-searchbar version updated
