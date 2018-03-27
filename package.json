@@ -104,7 +104,7 @@
   },
   "dependencies": {
     "@opuscapita/oc-cm-common-styles": "2.0.4",
-    "@opuscapita/react-checkbox": "1.0.0",
+    "@opuscapita/react-checkbox": "1.1.0",
     "@opuscapita/react-icons": "2.0.2",
     "@opuscapita/react-perfect-scrollbar": "3.0.0",
     "@opuscapita/react-searchbar": "1.0.1",

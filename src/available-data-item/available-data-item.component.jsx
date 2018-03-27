@@ -16,6 +16,20 @@ export default class DataItem extends React.PureComponent {
     label: '',
   }
 
+  handleKeyPress = (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      this.props.handleItemClick(true);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      this.props.handleItemClick(false);
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      this.props.handleItemClick(true);
+    }
+  }
+
+
   render() {
     const {
       isLocked,
@@ -26,9 +40,11 @@ export default class DataItem extends React.PureComponent {
     return (
       <div className="oc-select-order-list-available-data-item">
         <Checkbox
+          inputRef={(ref) => { this.input = ref; }}
           checked={isSelected}
           disabled={isLocked}
           onChange={handleItemClick}
+          onKeyDown={this.handleKeyPress}
         />
         <span className="oc-select-order-list-available-data-item-text">
           {label}
