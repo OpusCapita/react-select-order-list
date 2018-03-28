@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## next
+* oc-cm-common-styles related dependencies updated
 
 ## 3.1.0
 * Added arrow keys to moving between elements
@@ -62,7 +63,7 @@
 ## 1.0.3
 * Moved dependencies to devDependencies
 
-## 1.0.2 
+## 1.0.2
 * Fixed example
 
 ## 1.0.1

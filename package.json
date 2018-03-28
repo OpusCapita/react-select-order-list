@@ -107,7 +107,7 @@
     "@opuscapita/react-checkbox": "1.1.0",
     "@opuscapita/react-icons": "2.0.2",
     "@opuscapita/react-perfect-scrollbar": "3.0.0",
-    "@opuscapita/react-searchbar": "1.0.1",
+    "@opuscapita/react-searchbar": "1.0.2",
     "classnames": "2.2.5",
     "react-sortable-hoc": "0.6.8"
   },
