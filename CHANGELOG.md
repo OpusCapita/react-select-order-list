@@ -4,6 +4,9 @@
 
 ## next
 
+## 3.1.2
+* @opuscapita/react-checkbox upgraded to version 1.1.1
+
 ## 3.1.1
 * oc-cm-common-styles related dependencies updated
 
