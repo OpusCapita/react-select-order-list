@@ -1,5 +1,7 @@
 import { List } from 'immutable';
 import { arrayMove } from 'react-sortable-hoc';
+import shortid from 'shortid';
+
 
 const escapeRegExp = /[-\\^$*+?.()|[\]{}]/g;
 const escapeKeyword = keyword => keyword.replace(escapeRegExp, '\\$&');
@@ -11,6 +13,7 @@ export default {
       const isSelected = selectedData.findIndex(i => i.value === value) !== -1;
       const sort = ind + 1;
       return {
+        uuid: shortid.generate(),
         isLocked,
         isSelected,
         label,
@@ -72,7 +75,7 @@ export default {
     let filteredData;
     if (keyword !== '') {
       const regexp = new RegExp(escapeKeyword(keyword), 'i');
-      filteredData = data.filter(i => regexp.test(i.label));
+      filteredData = data.filter(i => regexp.test(i.labelText || i.label));
     } else {
       filteredData = data;
     }

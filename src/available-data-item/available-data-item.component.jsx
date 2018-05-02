@@ -16,6 +16,10 @@ export default class DataItem extends React.PureComponent {
     label: '',
   }
 
+  getCheckboxRef = (element) => { this.checkbox = element; }
+
+  getSpanRef = (element) => { this.span = element; }
+
   handleKeyPress = (e) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
@@ -29,7 +33,6 @@ export default class DataItem extends React.PureComponent {
     }
   }
 
-
   render() {
     const {
       isLocked,
@@ -40,13 +43,16 @@ export default class DataItem extends React.PureComponent {
     return (
       <div className="oc-select-order-list-available-data-item">
         <Checkbox
-          inputRef={(ref) => { this.input = ref; }}
+          inputRef={this.getCheckboxRef}
           checked={isSelected}
           disabled={isLocked}
           onChange={handleItemClick}
           onKeyDown={this.handleKeyPress}
         />
-        <span className="oc-select-order-list-available-data-item-text">
+        <span
+          className="oc-select-order-list-available-data-item-text"
+          ref={this.getSpanRef}
+        >
           {label}
         </span>
       </div>

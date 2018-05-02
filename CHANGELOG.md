@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## next
+* Fixed available data filtering when item label is not a string but an element
+* Fixed key navigation when filtering is applied
 
 ## 3.1.2
 * @opuscapita/react-checkbox upgraded to version 1.1.1

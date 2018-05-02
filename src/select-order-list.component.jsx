@@ -54,7 +54,6 @@ export default class SelectOrderList extends React.PureComponent {
       availableDataList,
       selectedDataList: Utils.getSelectedDataList(props.selectedData),
       keyword: '',
-      visibleAvailableDataList: availableDataList,
     };
   }
 
@@ -67,7 +66,6 @@ export default class SelectOrderList extends React.PureComponent {
       this.setState({
         availableDataList,
         selectedDataList,
-        visibleAvailableDataList: Utils.filterData(availableDataList, this.state.keyword),
       });
     }
   }
@@ -81,8 +79,7 @@ export default class SelectOrderList extends React.PureComponent {
 
   handleKeywordChange = (e) => {
     const keyword = e;
-    const visibleAvailableDataList = Utils.filterData(this.state.availableDataList, keyword);
-    this.setState({ keyword, visibleAvailableDataList });
+    this.setState({ keyword });
   }
 
   handleSortChange = ({ oldIndex, newIndex }) => {
@@ -156,9 +153,10 @@ export default class SelectOrderList extends React.PureComponent {
           <Col xs={6}>
             <FormGroup>
               <AvailableDataList
-                items={this.state.visibleAvailableDataList}
+                items={this.state.availableDataList}
                 onSelectItem={this.handleSelectItem}
                 onUnselectItem={this.handleUnselectItem}
+                searchKeyword={this.state.keyword}
               />
             </FormGroup>
           </Col>

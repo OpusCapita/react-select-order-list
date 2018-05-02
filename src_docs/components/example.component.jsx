@@ -28,8 +28,16 @@ export default class SelectOrderListView extends React.Component {
         label: 'Item 1',
         value: 1,
       },
+      {
+        label: <span>Item 2</span>,
+        value: 2,
+      },
+      {
+        label: <div><span>Item 3</span></div>,
+        value: 3,
+      },
     ]);
-    for (let i = 2; i <= numberOfItems; i += 1) {
+    for (let i = 4; i <= numberOfItems; i += 1) {
       data = data.push({
         label: `Item ${i}`,
         value: i,
