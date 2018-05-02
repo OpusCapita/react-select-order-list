@@ -2,7 +2,9 @@
 
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
-## next
+## <next>
+
+## 3.1.3
 * Fixed available data filtering when item label is not a string but an element
 * Fixed key navigation when filtering is applied
 
