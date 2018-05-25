@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Removed ununique ids oc-icon-remove
 
 ## 3.1.3
 * Fixed available data filtering when item label is not a string but an element
