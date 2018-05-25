@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 3.1.4
 * Removed ununique ids oc-icon-remove
 
 ## 3.1.3
