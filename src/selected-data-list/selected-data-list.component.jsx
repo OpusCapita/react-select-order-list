@@ -38,7 +38,6 @@ const SortableItem = SortableElement(({ value, handleItemRemove, handleMouseDown
     }
     {!value.isLocked &&
       <Icon
-        id="oc-icon-remove"
         type="indicator"
         name="remove"
         className="oc-select-order-list-remove-icon"
