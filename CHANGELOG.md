@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Updated  @opuscapita/react-checkbox and @opuscapita/react-searchbar versions
 
 ## 3.1.5
 * Updated @opuscapita/react-checkbox version
