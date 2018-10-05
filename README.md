@@ -26,13 +26,15 @@ Also you need to configure sass loader, since all the styles are in sass format.
 
 | Prop name                | Type                      | Default  | Description                           |
 | ------------------------ | --------------------------| ---------| --------------------------------------|
-| availableData            | Immutable List of `item`s | required | List of the selectable items          |
+| availableData            | Immutable List of `item`s | List()   | List of the selectable items          |
 | onChange                 | function                  | required | Callback function, which is called when data selection or order is changed. It returns an object of allSelected (boolean) sign and selectedData (List) |
 | allSelected              | boolean                   | false    | Sign of all available items selected  |
 | id                       | string                    | ''       | Id for a component div wrapper        |
 | searchPlaceholder        | string                    | ''       | Placeholder for search                |
 | selectedData             | Immutable List of `item`s | List     | List of selected and sorted items     |
 | translations             | object                    | { allLabel: '', availableListLabel: '', searchTooltip: '', selectedListLabel: '' } | Localized labels         |
+| singleColumn             | boolean                   | false    | Uses single column layout and shows only selected data cloumn |
+
 
 #### SelectOrderList - `item`s
 

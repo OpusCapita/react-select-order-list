@@ -20,9 +20,10 @@ import './select-order-list.component.scss';
 
 export default class SelectOrderList extends React.PureComponent {
   static propTypes = {
-    availableData: ImmutablePropTypes.list.isRequired,
+    availableData: ImmutablePropTypes.list,
     onChange: PropTypes.func.isRequired,
     allSelected: PropTypes.bool,
+    singleColumn: PropTypes.bool,
     id: PropTypes.string,
     searchPlaceholder: PropTypes.string,
     selectedData: ImmutablePropTypes.list,
@@ -35,10 +36,12 @@ export default class SelectOrderList extends React.PureComponent {
   };
 
   static defaultProps = {
+    availableData: List(),
     allSelected: false,
     id: '',
     searchPlaceholder: 'Search...',
     selectedData: List(),
+    singleColumn: false,
     translations: {
       allLabel: '',
       availableListLabel: '',
@@ -105,70 +108,107 @@ export default class SelectOrderList extends React.PureComponent {
     });
   }
 
+  renderSearchBar = () => {
+    const { singleColumn } = this.props;
+    const columnCount = singleColumn ? 12 : 6;
+    return (
+      <Col xs={columnCount}>
+        <FormGroup className="oc-select-order-list-keyword-group">
+          { singleColumn ||
+            <SearchBar
+              dynamicSearchStartsFrom={1}
+              inputClassName="oc-select-order-list-keyword-input"
+              onSearch={this.handleKeywordChange}
+              searchPlaceHolder={this.props.searchPlaceholder}
+              tooltip={this.props.translations.searchTooltip}
+              value={this.state.keyword}
+            />
+          }
+        </FormGroup>
+      </Col>
+    );
+  }
+
+  renderAavailableDataHeader = () => {
+    if (this.props.singleColumn) return null;
+
+    return (
+      <React.Fragment>
+        <Col xs={4}>
+          <FormGroup className="oc-select-order-list-label">
+            <ControlLabel>
+              {this.props.translations.availableListLabel}
+            </ControlLabel>
+          </FormGroup>
+        </Col>
+        <Col xs={2}>
+          <FormGroup>
+            <Checkbox
+              className="oc-select-order-list-select-all-checkbox"
+              checked={this.props.allSelected}
+              onChange={this.handleAllSelectedChange}
+              label={this.props.translations.allLabel}
+            />
+          </FormGroup>
+        </Col>
+      </React.Fragment>
+    );
+  }
+
+  renderSelectedDataHeader = () => (
+    <Col xs={this.props.singleColumn ? 12 : 6}>
+      <FormGroup className="oc-select-order-list-label">
+        <ControlLabel>
+          {this.props.translations.selectedListLabel}
+        </ControlLabel>
+      </FormGroup>
+    </Col>
+  )
+
+  renderAavailableDataContent = () => {
+    if (this.props.singleColumn) return null;
+
+    return (
+      <Col xs={6}>
+        <FormGroup>
+          <AvailableDataList
+            items={this.state.availableDataList}
+            onSelectItem={this.handleSelectItem}
+            onUnselectItem={this.handleUnselectItem}
+            searchKeyword={this.state.keyword}
+          />
+        </FormGroup>
+      </Col>
+    );
+  }
+
+  renderSelectedContent = () => (
+    <Col xs={this.props.singleColumn ? 12 : 6}>
+      <FormGroup>
+        <SelectedDataList
+          items={this.state.selectedDataList}
+          onSortChange={this.handleSortChange}
+          onRemoveItem={this.handleUnselectItem}
+          showRemoveIcon={!this.props.singleColumn}
+        />
+      </FormGroup>
+    </Col>
+  )
+
   render() {
     const id = this.props.id ? `oc-select-order-list-${this.props.id}` : 'oc-select-order-list';
     return (
       <Grid id={id} fluid>
         <Row>
-          <Col xs={6}>
-            <FormGroup className="oc-select-order-list-keyword-group">
-              <SearchBar
-                dynamicSearchStartsFrom={1}
-                inputClassName="oc-select-order-list-keyword-input"
-                onSearch={this.handleKeywordChange}
-                searchPlaceHolder={this.props.searchPlaceholder}
-                tooltip={this.props.translations.searchTooltip}
-                value={this.state.keyword}
-              />
-            </FormGroup>
-          </Col>
+          {this.renderSearchBar()}
         </Row>
         <Row>
-          <Col xs={4}>
-            <FormGroup className="oc-select-order-list-label">
-              <ControlLabel>
-                {this.props.translations.availableListLabel}
-              </ControlLabel>
-            </FormGroup>
-          </Col>
-          <Col xs={2}>
-            <FormGroup>
-              <Checkbox
-                className="oc-select-order-list-select-all-checkbox"
-                checked={this.props.allSelected}
-                onChange={this.handleAllSelectedChange}
-                label={this.props.translations.allLabel}
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={6}>
-            <FormGroup className="oc-select-order-list-label">
-              <ControlLabel>
-                {this.props.translations.selectedListLabel}
-              </ControlLabel>
-            </FormGroup>
-          </Col>
+          {this.renderAavailableDataHeader()}
+          {this.renderSelectedDataHeader()}
         </Row>
         <Row>
-          <Col xs={6}>
-            <FormGroup>
-              <AvailableDataList
-                items={this.state.availableDataList}
-                onSelectItem={this.handleSelectItem}
-                onUnselectItem={this.handleUnselectItem}
-                searchKeyword={this.state.keyword}
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={6}>
-            <FormGroup>
-              <SelectedDataList
-                items={this.state.selectedDataList}
-                onSortChange={this.handleSortChange}
-                onRemoveItem={this.handleUnselectItem}
-              />
-            </FormGroup>
-          </Col>
+          {this.renderAavailableDataContent()}
+          {this.renderSelectedContent()}
         </Row>
       </Grid>
     );

@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Single column layout for selection list added
 
 ## 3.1.6
 * Updated  @opuscapita/react-checkbox and @opuscapita/react-searchbar versions
