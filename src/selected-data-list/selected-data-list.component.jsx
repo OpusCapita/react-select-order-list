@@ -9,7 +9,9 @@ import {
   SortableElement,
 } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({ value, handleItemRemove, handleMouseDown }) => (
+const SortableItem = SortableElement(({
+  value, handleItemRemove, handleMouseDown, showRemoveIcon,
+}) => (
   <div
     key={value.value}
     className={`oc-select-order-list-selected-data-item${value.isLocked ? ' locked' : ''}`}
@@ -36,7 +38,7 @@ const SortableItem = SortableElement(({ value, handleItemRemove, handleMouseDown
         height={30}
       />
     }
-    {!value.isLocked &&
+    {!value.isLocked && showRemoveIcon &&
       <Icon
         type="indicator"
         name="remove"
@@ -49,7 +51,9 @@ const SortableItem = SortableElement(({ value, handleItemRemove, handleMouseDown
   </div>
 ));
 
-const SortableList = SortableContainer(({ items, handleItemRemove, handleMouseDown }) => (
+const SortableList = SortableContainer(({
+  items, handleItemRemove, handleMouseDown, showRemoveIcon,
+}) => (
   <div className="oc-select-order-list-selected-data-list">
     <ScrollBar>
       {items.map((value, index) => (
@@ -60,6 +64,7 @@ const SortableList = SortableContainer(({ items, handleItemRemove, handleMouseDo
           disabled={value.isLocked}
           handleItemRemove={handleItemRemove(value)}
           handleMouseDown={handleMouseDown}
+          showRemoveIcon={showRemoveIcon}
         />
       ))}
     </ScrollBar>
@@ -71,6 +76,7 @@ export default class SelectedDataList extends React.PureComponent {
     items: ImmutablePropTypes.list.isRequired,
     onRemoveItem: PropTypes.func.isRequired,
     onSortChange: PropTypes.func.isRequired,
+    showRemoveIcon: PropTypes.bool.isRequired,
   };
 
   handleItemRemove = item => () => {
@@ -95,6 +101,7 @@ export default class SelectedDataList extends React.PureComponent {
         items={this.props.items}
         onSortEnd={this.props.onSortChange}
         shouldCancelStart={this.shouldCancelStart}
+        showRemoveIcon={this.props.showRemoveIcon}
       />
     );
   }

@@ -9,9 +9,11 @@ export default class SelectOrderListView extends React.Component {
     super(props);
     const availableData = this.initializeData(30);
     const selectedData = this.initializeData(5);
+    const selectionList = this.initializeData(5);
     this.state = {
       availableData,
       selectedData,
+      selectionList,
       allSelected: false,
     };
   }
@@ -48,21 +50,36 @@ export default class SelectOrderListView extends React.Component {
 
   render() {
     return (
-      <div className="oc-select-order-list">
-        <SelectOrderList
-          allSelected={this.state.allSelected}
-          availableData={this.state.availableData}
-          id="example"
-          onChange={this.onChange}
-          selectedData={this.state.selectedData}
-          translations={{
-            allLabel: 'All',
-            availableListLabel: 'Available data',
-            selectedListLabel: 'Selected data',
-            searchTooltip: 'Test',
-          }}
-        />
-      </div>
+      <React.Fragment>
+        <div className="oc-select-order-list">
+          <SelectOrderList
+            allSelected={this.state.allSelected}
+            availableData={this.state.availableData}
+            id="example1"
+            onChange={this.onChange}
+            selectedData={this.state.selectedData}
+            translations={{
+              allLabel: 'All',
+              availableListLabel: 'Available data',
+              selectedListLabel: 'Selected data',
+              searchTooltip: 'Test',
+            }}
+          />
+        </div>
+        <div id="divider" style={{ height: '10px', background: '#d3dade' }} />
+        <div className="oc-select-order-list">
+          <SelectOrderList
+            singleColumn
+            selectedData={this.state.selectionList}
+            id="example2"
+            onChange={this.onChange}
+            translations={{
+              selectedListLabel: 'Order list',
+            }}
+          />
+        </div>
+      </React.Fragment>
+
     );
   }
 }
