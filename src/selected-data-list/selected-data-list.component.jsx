@@ -76,8 +76,12 @@ export default class SelectedDataList extends React.PureComponent {
     items: ImmutablePropTypes.list.isRequired,
     onRemoveItem: PropTypes.func.isRequired,
     onSortChange: PropTypes.func.isRequired,
-    showRemoveIcon: PropTypes.bool.isRequired,
+    showRemoveIcon: PropTypes.bool,
   };
+
+  static defaultProps = {
+    showRemoveIcon: true,
+  }
 
   handleItemRemove = item => () => {
     this.props.onRemoveItem(item);
