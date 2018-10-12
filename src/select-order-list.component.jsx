@@ -133,7 +133,7 @@ export default class SelectOrderList extends React.PureComponent {
     if (this.props.singleColumn) return null;
 
     return (
-      <React.Fragment>
+      <div>
         <Col xs={4}>
           <FormGroup className="oc-select-order-list-label">
             <ControlLabel>
@@ -151,7 +151,7 @@ export default class SelectOrderList extends React.PureComponent {
             />
           </FormGroup>
         </Col>
-      </React.Fragment>
+      </div>
     );
   }
 

@@ -50,7 +50,7 @@ export default class SelectOrderListView extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div>
         <div className="oc-select-order-list">
           <SelectOrderList
             allSelected={this.state.allSelected}
@@ -78,7 +78,7 @@ export default class SelectOrderListView extends React.Component {
             }}
           />
         </div>
-      </React.Fragment>
+      </div>
 
     );
   }
