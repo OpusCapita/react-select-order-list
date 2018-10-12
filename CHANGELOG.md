@@ -4,6 +4,10 @@
 
 ## <next>
 
+## 3.2.1
+
+- <React.Fragment> removed to support 15.x React versions
+
 ## 3.2.0
 
 - Single column layout for selection list added
