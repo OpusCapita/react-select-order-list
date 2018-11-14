@@ -1,12 +1,12 @@
 import React from 'react';
-import { Panel, Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import ExampleComponent from '../components/example.component';
 import GithubLogo from '../images/logo-github.svg';
 
 export default () => (
   <Grid>
     <Row>
-      <Col xs={11} md={8} lg={6}>
+      <Col xs={12}>
         <Row>
           <Col xs={10}>
             <h3>React select order list</h3>
@@ -20,9 +20,7 @@ export default () => (
             </a>
           </Col>
         </Row>
-        <Panel>
-          <ExampleComponent />
-        </Panel>
+        <ExampleComponent />
       </Col>
     </Row>
   </Grid>
