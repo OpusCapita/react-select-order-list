@@ -1,8 +1,8 @@
 import React from 'react';
+import { Panel, Col, Row } from 'react-bootstrap';
 import { List } from 'immutable';
 
 import SelectOrderList from '../../src/index';
-import './example.component.scss';
 
 export default class SelectOrderListView extends React.Component {
   constructor(props) {
@@ -50,36 +50,38 @@ export default class SelectOrderListView extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="oc-select-order-list">
-          <SelectOrderList
-            allSelected={this.state.allSelected}
-            availableData={this.state.availableData}
-            id="example1"
-            onChange={this.onChange}
-            selectedData={this.state.selectedData}
-            translations={{
-              allLabel: 'All',
-              availableListLabel: 'Available data',
-              selectedListLabel: 'Selected data',
-              searchTooltip: 'Test',
-            }}
-          />
-        </div>
-        <div id="divider" style={{ height: '10px', background: '#d3dade' }} />
-        <div className="oc-select-order-list">
-          <SelectOrderList
-            singleColumn
-            selectedData={this.state.selectionList}
-            id="example2"
-            onChange={this.onChange}
-            translations={{
-              selectedListLabel: 'Order list',
-            }}
-          />
-        </div>
-      </div>
-
+      <Row>
+        <Col xs={12} lg={6}>
+          <Panel>
+            <SelectOrderList
+              allSelected={this.state.allSelected}
+              availableData={this.state.availableData}
+              id="example1"
+              onChange={this.onChange}
+              selectedData={this.state.selectedData}
+              translations={{
+                allLabel: 'All',
+                availableListLabel: 'Available data',
+                selectedListLabel: 'Selected data',
+                searchTooltip: 'Test',
+              }}
+            />
+          </Panel>
+        </Col>
+        <Col xs={12} lg={6}>
+          <Panel>
+            <SelectOrderList
+              singleColumn
+              selectedData={this.state.selectionList}
+              id="example2"
+              onChange={this.onChange}
+              translations={{
+                selectedListLabel: 'Order list',
+              }}
+            />
+          </Panel>
+        </Col>
+      </Row>
     );
   }
 }

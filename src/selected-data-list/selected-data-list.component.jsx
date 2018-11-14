@@ -25,8 +25,8 @@ const SortableItem = SortableElement(({
         type="indicator"
         name="draggingArrows"
         className="oc-select-order-list-dragging-icon"
-        width={20}
-        height={20}
+        width={15}
+        height={15}
       />
     }
     {value.isLocked &&
@@ -34,8 +34,8 @@ const SortableItem = SortableElement(({
         type="indicator"
         name="locked"
         className="oc-select-order-list-locked-icon"
-        width={30}
-        height={30}
+        width={20}
+        height={20}
       />
     }
     {!value.isLocked && showRemoveIcon &&
@@ -43,8 +43,8 @@ const SortableItem = SortableElement(({
         type="indicator"
         name="remove"
         className="oc-select-order-list-remove-icon"
-        width={20}
-        height={20}
+        width={10}
+        height={10}
         onClick={handleItemRemove}
       />
     }
