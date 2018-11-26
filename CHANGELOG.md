@@ -3,6 +3,10 @@
 
 ## <next>
 
+## 3.2.3
+* Add margin to select list to get room for scrollbar
+* Remove not needed npm packages
+
 ## 3.2.2
 * Upgrade all packages that can be upgraded
 
