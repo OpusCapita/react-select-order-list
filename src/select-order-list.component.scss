@@ -8,7 +8,7 @@
 }
 
 .oc-select-order-list-keyword-group {
-  margin: 10px 0 0 0;
+  margin: 10px 0;
   position: relative;
 }
 
@@ -25,12 +25,12 @@
   .oc-select-order-list-available-data-item, .oc-select-order-list-selected-data-item {
     background-color: initial;
   }
-  
+
   //IE problem with navigation to last element on list by arrows key
   .ps__thumb-x {
     visibility: hidden !important;
   }
-}  
+}
 
 
 .oc-select-order-list-available-data-item, .oc-select-order-list-selected-data-item {
