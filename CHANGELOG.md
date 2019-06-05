@@ -2,6 +2,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Fixed seach box bottom margin
 
 ## 3.2.3
 * Add margin to select list to get room for scrollbar
