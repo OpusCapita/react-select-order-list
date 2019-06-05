@@ -2,6 +2,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 3.2.4
 * Fixed seach box bottom margin
 
 ## 3.2.3
