@@ -58,7 +58,7 @@ export default class ListItemsView extends React.Component {
       availableData: List([
         {
           label: 'one',
-          value: 1',
+          value: 1,
         },
         {
           label: 'two',
